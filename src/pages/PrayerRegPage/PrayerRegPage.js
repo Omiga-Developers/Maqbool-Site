@@ -1,7 +1,7 @@
+import { Form, Input } from 'antd';
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import prayerCoverImage from './image.jpg';
-import { Button, Form, Input, message } from 'antd';
 
 function PrayerRegPage() {
 	const [nicPassport, setNicPassport] = useState('');
@@ -42,7 +42,7 @@ function PrayerRegPage() {
 				</div>
 				<div className="prayerReg__bodyForm">
 					<Form
-						className="register__formSection"
+						className="prayerReg__bodyFormSection"
 						name="basic"
 						initialValues={{ remember: true }}
 						onFinish={onHandleRegister}
@@ -97,31 +97,31 @@ function PrayerRegPage() {
 							</Form.Item>
 						</div>
 
-                        <div>
+						<div className="prayerReg__bodyJammathTimings">
 							<p>Jamaath Timings</p>
-							<section>
-                                <div>
-                                    <p>Jamaath 1</p>
-                                    <p>Gates Open at - 12:10</p>
-                                    <p>Kuthuba - 12:30</p>
-                                    <p>Namaaz - 12:45</p>
-                                </div>
-                                <div>
-                                    <p>Jamaath 2</p>
-                                    <p>Gates Open at - 12:50</p>
-                                    <p>Kuthuba - 13:00</p>
-                                    <p>Namaaz - 13:15</p>
-                                </div>
-                                <div>
-                                    <p>Jamaath 3</p>
-                                    <p>Gates Open at - 13:20</p>
-                                    <p>Kuthuba - 13:30</p>
-                                    <p>Namaaz - 13:45</p>
-                                </div>
+							<section className="prayerReg__bodyJamaathContainer">
+								<div className="jamaath01">
+									<p>Jamaath 1</p>
+									<p>Gates Open at - 12:10</p>
+									<p>Kuthuba - 12:30</p>
+									<p>Namaaz - 12:45</p>
+								</div>
+								<div className="jamaath02">
+									<p>Jamaath 2</p>
+									<p>Gates Open at - 12:50</p>
+									<p>Kuthuba - 13:00</p>
+									<p>Namaaz - 13:15</p>
+								</div>
+								<div className="jamaath03">
+									<p>Jamaath 3</p>
+									<p>Gates Open at - 13:20</p>
+									<p>Kuthuba - 13:30</p>
+									<p>Namaaz - 13:45</p>
+								</div>
 							</section>
 						</div>
 
-						<div>
+						<div className="JamaathOptions">
 							<p>Jamaath Options</p>
 							<div>
 								<select onChange={(e) => setSelectJamaathOption(e.target.value)}>
@@ -162,6 +162,94 @@ const PrayerRegPageMain = styled.div`
 	}
 	.prayerReg__title > p:first-child {
 		font-weight: 700;
+	}
+	.prayerReg__body {
+		margin: 80px 100px;
+	}
+	.prayerReg__bodyDescription > h2 {
+		color: darkgreen;
+		font-size: 25px;
+		font-weight: bold;
+		margin: 30px 0;
+	}
+	.prayerReg__bodyDescription > p,
+	.prayerReg__bodyFormSection > div > p {
+		color: darkgreen;
+		font-size: 20px;
+	}
+	.prayerReg__bodyFormSection {
+		margin: 100px 0;
+	}
+	.ant-input {
+		background-color: #efefef;
+		border-radius: 20px;
+	}
+	.prayerReg__bodyJamaathContainer {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+	.prayerReg__bodyJamaathContainer > div {
+		border: 1px green solid;
+		padding: 50px 30px;
+		flex-direction: column;
+		background-color: green;
+		color: white;
+		display: flex;
+		border-radius: 20px;
+		align-items: center;
+	}
+	.prayerReg__bodyJamaathContainer > div > p {
+		font-size: 18px;
+		font-weight: bold;
+		margin-bottom: 0px;
+	}
+	.prayerReg__bodyJamaathContainer > div > p:first-child {
+		margin-bottom: 20px;
+	}
+	.prayerReg__bodyJammathTimings {
+		margin: 50px 0;
+	}
+	.JamaathOptions > div > select {
+		color: grey !important;
+		outline: none;
+		padding: 5px 0;
+		width: 300px;
+		cursor: pointer;
+		font-size: 1rem;
+		border: 1px lightgrey solid;
+		@media screen and (max-width: 450px) {
+			width: 50vw;
+		}
+	}
+	.prayerReg__bodyFormRegister {
+		margin: 50px 0;
+	}
+	.prayerReg__bodyFormRegister {
+		background-color: darkgreen;
+		color: #fff;
+		outline: none;
+		cursor: pointer;
+		font-size: 20px;
+		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12), 3px 1px 5px rgba(0, 0, 0, 0.24);
+		border: 1px transparent solid;
+		transition: 0.5s ease-in-out;
+		border-radius: 20px;
+		padding: 5px 25px;
+		/* border: 1px red solid; */
+	}
+	.prayerReg__bodyFormRegister:hover {
+		border: 1px darkgreen solid;
+		transition: 0.2s ease-in-out;
+	}
+	.jamaath01,
+	.jamaath02,
+	.jamaath03 {
+		background-image: url(${prayerCoverImage});
+		background-repeat: no-repeat;
+		background-size: cover;
+        cursor: pointer;
+		background-position: center;
 	}
 `;
 export default PrayerRegPage;
