@@ -48,7 +48,7 @@ export default Footer;
 
 const FooterWrapper = styled.div`
 	color: #ccc;
-	background-color: darkgreen;
+	background-color: #045762;
 	display: flex;
 	justify-content: space-between;
 	padding-top: 2rem;
@@ -81,6 +81,9 @@ const FooterWrapper = styled.div`
 	> div.center > div {
 		width: 100%;
 		padding-left: 5vw;
+	}
+	> div.right > div> p > a {
+		color: white;
 	}
 
 	@media screen and (max-width: 700px) {

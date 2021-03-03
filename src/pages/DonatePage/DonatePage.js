@@ -58,7 +58,7 @@ const DonatePageMain = styled.div`
 	.donate__body > h1 {
 		margin: 100px;
 		font-size: 50px;
-		color: darkgreen;
+		color: #045762;
 		font-weight: lighter;
 	}
 	.donate__body > h1 > span {
@@ -66,7 +66,7 @@ const DonatePageMain = styled.div`
 	}
 	.donate__body > button {
 		margin-bottom: 100px;
-		color: darkgreen;
+		color: #045762;
 		background-color: #fff;
 		outline: none;
         cursor: pointer;

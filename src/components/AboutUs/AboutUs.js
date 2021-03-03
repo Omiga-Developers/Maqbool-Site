@@ -42,7 +42,7 @@ const AboutUsWrapper = styled.div `
 
     > div.title > h2 {
         font-size: 2rem;
-        color: seagreen;
+        color: #045762;
     }
 
     > div.lower {

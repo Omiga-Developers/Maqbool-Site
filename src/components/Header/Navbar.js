@@ -35,7 +35,7 @@ const NavbarWrapper = styled.div`
 
 	> .ant-menu > li > a {
 		font-size: 1.6rem;
-		color: darkgreen !important;
+		color:  #045762 !important;
 		font-weight: 600;
 		padding: 0.2rem 0.8rem !important;
 	}
@@ -43,13 +43,13 @@ const NavbarWrapper = styled.div`
 	.ant-menu-item-selected  {
 		border: 1px solid white;
 		box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.25);
-		color: darkgreen !important;
+		color:  #045762 !important;
 		border-bottom: none !important;
 		border-radius: 0.5rem;
 	}
 
 	.ant-menu-item-active  {
-		border-color: darkgreen !important;
-		color: darkgreen !important;
+		border-color:  #045762 !important;
+		color:  #045762 !important;
 	}
 `;

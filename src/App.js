@@ -35,6 +35,10 @@ function App() {
 					</Route>
 					<Route path="/">
 						<Redirect path="/home" />
+						<Banner />
+						<PrayerWidget />
+						<AboutUs />
+						<BottomBanner />
 					</Route>
 				</Switch>
 			</div>

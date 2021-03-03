@@ -16,9 +16,7 @@ function AboutUsPage() {
 			<div className="aboutUs__description">
 				<p>
 					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis quidem animi sint rem, veritatis ipsa non, mollitia rerum odit veniam iusto sit reiciendis? Eius, nemo? Iusto vel enim reiciendis expedita!
-					Veniam cupiditate ipsa et voluptatibus perferendis aspernatur saepe ea numquam ab necessitatibus tempore deserunt quam asperiores molestiae aliquid sit ex minus, at commodi voluptates ipsam, corporis nesciunt maiores! Exercitationem, sunt?
-					Sequi hic alias consequatur soluta temporibus, ratione eius omnis provident earum facilis numquam cupiditate ipsam possimus, qui magni quasi accusamus exercitationem tempora rem. Mi, aperiam officiis, expedita ipsa ea voluptas dignissimos impedit dolor tempore quos numquam sed facilis ipsum aliquid?
-					Aspernatur nulla id sint minima, laborum deleniti facilis nemo iure necessitatibus alias consectetur nisi quod voluptatibus sapiente placeat quidem obcaecati repellendus, in omnis dolorum vitae unde! Cum ut sunt eius.
+					Veniorum vitae unde! Cum ut sunt eius.
 					Quibusdam dolor atque eveniet possimus quos nulla voluptas officia ullam placeat aperiam totam, dicta commodi quod, ratione nisi sapiente. Hic tempore magni fuga necessitatibus veniam illum at nulla dicta saepe.
 					Porro architecto numquam earum itaque dicta, sunt et laboriosam in id voluptatum. Perspiciatis corrupti ipsam est tempora omnis quibusdam distinctio blanditiis ut aspernatur, consectetur deleniti minima voluptatibus, fugiat quod aliquam?
 					Harum, suscipit sequi. Error excepturi consequuntur nostrum saepe dolore eos, inventore commodi doloribus quisquam nam ut. Debitis voluptates odit eligendi repellen
@@ -55,10 +53,12 @@ const AboutUsPageMain = styled.div`
 	.aboutUs__description {
 		display: flex;
 		justify-content: space-evenly;
-		padding: 80px 100px;
+		padding: 150px 100px;
 	}
 	.aboutUs__description > p{
 		margin: 0 50px 0 0;
+		font-size: 18px;
+		color: #045762;
 	}
 `;
 

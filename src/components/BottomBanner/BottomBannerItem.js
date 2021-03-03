@@ -44,18 +44,18 @@ const BottomBannerItemWrapper = styled.div `
 
     div.bannerItem__leftTop > h2 {
         font-size: 4rem;
-        color: seagreen;
+        color: #045762;
         line-height: 0.1;
         margin-bottom: 0;
     }
 
     div.bannerItem__leftTop > p {
         font-size: 4rem;
-        color: seagreen;
+        color: #045762;
     }
 
     div.bannerItem__leftBottom > button {
-        color: seagreen;
+        color: #045762;
         padding: 0rem 1.2rem 2.4rem 1.2rem;
         border-radius: 2rem;
     }

@@ -167,14 +167,14 @@ const PrayerRegPageMain = styled.div`
 		margin: 80px 100px;
 	}
 	.prayerReg__bodyDescription > h2 {
-		color: darkgreen;
+		color: #045762;
 		font-size: 25px;
 		font-weight: bold;
 		margin: 30px 0;
 	}
 	.prayerReg__bodyDescription > p,
 	.prayerReg__bodyFormSection > div > p {
-		color: darkgreen;
+		color: #045762;
 		font-size: 20px;
 	}
 	.prayerReg__bodyFormSection {
@@ -193,7 +193,7 @@ const PrayerRegPageMain = styled.div`
 		border: 1px green solid;
 		padding: 50px 30px;
 		flex-direction: column;
-		background-color: green;
+		background-color: #045762;
 		color: white;
 		display: flex;
 		border-radius: 20px;
@@ -222,12 +222,11 @@ const PrayerRegPageMain = styled.div`
 			width: 50vw;
 		}
 	}
+	
 	.prayerReg__bodyFormRegister {
-		margin: 50px 0;
-	}
-	.prayerReg__bodyFormRegister {
-		background-color: darkgreen;
+		background-color: #045762;
 		color: #fff;
+		margin: 50px 0;
 		outline: none;
 		cursor: pointer;
 		font-size: 20px;
@@ -240,6 +239,8 @@ const PrayerRegPageMain = styled.div`
 	}
 	.prayerReg__bodyFormRegister:hover {
 		border: 1px darkgreen solid;
+		background-color: #fff;
+		color: #045762;
 		transition: 0.2s ease-in-out;
 	}
 	.jamaath01,
