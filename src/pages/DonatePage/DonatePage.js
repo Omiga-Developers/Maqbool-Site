@@ -21,7 +21,7 @@ function DonatePage() {
 				</h1>
 
 				<button onClick={notify}>Donate</button>
-				<ToastContainer />
+				<ToastContainer hideProgressBar={true} autoClose={3000}/>
 			</div>
 		</DonatePageMain>
 	);
@@ -36,7 +36,7 @@ const DonatePageMain = styled.div`
 		background-image: url(${donateCoverImage});
 		background-repeat: no-repeat;
 		background-size: cover;
-		padding: 100px 150px;
+		padding: 130px 150px;
 		background-position: center;
 		width: 100%;
 	}
