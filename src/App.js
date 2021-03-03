@@ -11,7 +11,6 @@ import PrayerRegPage from './pages/PrayerRegPage';
 import DonatePage from './pages/DonatePage';
 import AboutUsPage from './pages/AboutUsPage';
 
-
 function App() {
 	return (
 		<Router>
@@ -28,12 +27,14 @@ function App() {
 					<Route path="/about-us">
 						<AboutUsPage />
 					</Route>
-					<Route path="/">
-						<Redirect path="/home" />
+					<Route path="/home">
 						<Banner />
 						<PrayerWidget />
 						<AboutUs />
 						<BottomBanner />
+					</Route>
+					<Route path="/">
+						<Redirect path="/home" />
 					</Route>
 				</Switch>
 			</div>
