@@ -7,9 +7,9 @@ import BottomBanner from './components/BottomBanner/BottomBanner';
 import PrayerWidget from './components/PrayerWidget/PrayerWidget';
 import Footer from './components/Footer/Footer';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
-import PrayerRegPage from './pages/PrayerRegPage';
-import DonatePage from './pages/DonatePage';
-import AboutUsPage from './pages/AboutUsPage';
+import PrayerRegPage from './pages/PrayerRegPage/PrayerRegPage';
+import DonatePage from './pages/DonatePage/DonatePage';
+import AboutUsPage from './pages/AboutUsPage/AboutUsPage';
 
 function App() {
 	return (
