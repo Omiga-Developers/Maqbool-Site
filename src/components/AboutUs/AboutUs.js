@@ -31,7 +31,7 @@ const AboutUs = () => {
 export default AboutUs
 
 const AboutUsWrapper = styled.div `
-    margin-bottom: 4rem;
+    margin: 4rem 0;
     display: flex;
     flex-direction: column;
 

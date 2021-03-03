@@ -22,5 +22,5 @@ export default BottomBanner;
 
 const BottomBannerWrapper = styled.div `
     display: relative;
-    margin-bottom: 4rem;
+    margin: 4rem 0;
 `
