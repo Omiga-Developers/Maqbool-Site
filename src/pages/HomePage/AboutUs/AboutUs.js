@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import FadeIn from 'react-fade-in';
 
 const AboutUs = () => {
 	return (
@@ -7,6 +8,7 @@ const AboutUs = () => {
 			<div className="title">
 				<h2>- About Us -</h2>
 			</div>
+
 			<div className="lower">
 				<div className="lower__left">
 					<p>
@@ -35,6 +37,7 @@ const AboutUs = () => {
 export default AboutUs;
 
 const AboutUsWrapper = styled.div`
+
 	margin: 8rem 4rem;
 	display: flex;
 	flex-direction: column;

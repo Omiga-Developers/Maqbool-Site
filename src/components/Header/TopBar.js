@@ -1,8 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Logo from './logo.svg';
-import { Link } from 'react-router-dom';
-import { Menu } from 'antd';
+
 
 const TopBar = () => {
 	return (

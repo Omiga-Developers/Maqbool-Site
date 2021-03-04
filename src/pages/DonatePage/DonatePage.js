@@ -32,6 +32,16 @@ const DonatePageMain = styled.div`
 	flex-direction: column;
 	align-items: center;
     font-family: 'Poppins';
+	animation: fadeInAnimation ease 1s;
+
+	@keyframes fadeInAnimation {
+		0% {
+			opacity: 0;
+		}
+		100% {
+			opacity: 1;
+		}
+	}
 
 
 	.donate__title {

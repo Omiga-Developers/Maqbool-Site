@@ -29,6 +29,16 @@ function AboutUsPage() {
 
 const AboutUsPageMain = styled.div`
     font-family: 'Poppins';
+	animation: fadeInAnimation ease 1s;
+
+	@keyframes fadeInAnimation {
+		0% {
+			opacity: 0;
+		}
+		100% {
+			opacity: 1;
+		}
+	}
 
 	.aboutUs__title {
 		background-image: url(${aboutCoverImage});
