@@ -4,16 +4,35 @@ import styled from 'styled-components';
 const PrayerWidget = () => {
 	return (
 		<PrayerWidgetWrapper>
-			<iframe
-				id="iframe"
-				title="prayerWidget"
-				className="widget-m-top"
-				style={{ height: '358px', border: '1px solid #ddd' }}
-				scrolling="no"
-				src="https://www.islamicfinder.org/prayer-widget/42598157/shafi/2/0/19.5/17.5"
-			>
-				{' '}
-			</iframe>
+			<div className="prayer__title">
+				<h2>- Prayer Details -</h2>
+			</div>
+			<div className="prayer__details">
+				<iframe
+					id="g2hFrame"
+					className="prayer__item"
+					title="islamic-calendar"
+					style={{ height: '358px', border: '1px solid #ddd' }}
+					scrolling="no"
+					src="https://www.islamicfinder.org/islamic-calendar/widgetGregorian?type=Gregorian"
+				/>
+				<iframe
+					id="iframe"
+					title="prayerWidget"
+					className="prayer__item"
+					style={{ height: '358px', border: '1px solid #ddd' }}
+					scrolling="no"
+					src="https://www.islamicfinder.org/prayer-widget/"
+				/>
+				<iframe
+					id="days"
+					title="islamic-special-days"
+					className="prayer__item"
+					style={{ height: '358px', border: '1px solid #ddd' }}
+					scrolling="no"
+					src="https://www.islamicfinder.org/specialislamicdays"
+				/>
+			</div>
 		</PrayerWidgetWrapper>
 	);
 };
@@ -21,9 +40,28 @@ const PrayerWidget = () => {
 export default PrayerWidget;
 
 const PrayerWidgetWrapper = styled.div`
-	margin: 4rem;
+	margin: 8rem 4rem;
 	display: flex;
-	justify-content: center;
-    font-family: 'Poppins';
+	flex-direction: column;
+	font-family: 'Poppins';
+	align-items: center;
 
+	.prayer__details {
+		width: 100%;
+		display: flex;
+		justify-content: space-evenly;
+		font-family: 'Poppins';
+	}
+	.prayer__title > h2 {
+		font-size: 2rem;
+		margin-bottom: 30px;
+		color: #045762;
+	}
+	.prayer__item {
+		transition: 0.5s ease-in-out;
+	}
+	.prayer__item:hover {
+		transform: scale(1.08);
+		transition: 0.5s ease-in-out;
+	}
 `;

@@ -31,7 +31,7 @@ const AboutUs = () => {
 export default AboutUs
 
 const AboutUsWrapper = styled.div `
-    margin: 4rem 0;
+    margin: 8rem 4rem;
     display: flex;
     flex-direction: column;
     font-family: 'Poppins';
@@ -43,6 +43,7 @@ const AboutUsWrapper = styled.div `
 
     > div.title > h2 {
         font-size: 2rem;
+        margin-bottom: 30px;
         color: #045762;
     }
 
