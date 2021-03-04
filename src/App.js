@@ -1,10 +1,6 @@
 import Header from './components/Header/Header';
 import { GlobalStyles } from './GlobalStyles.styles';
 import 'antd/dist/antd.css';
-import Banner from './components/Banner/Banner';
-import AboutUs from './pages/HomePage/AboutUs/AboutUs';
-import BottomBanner from './components/BottomBanner/BottomBanner';
-import PrayerWidget from './components/PrayerWidget/PrayerWidget';
 import Footer from './components/Footer/Footer';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import PrayerRegPage from './pages/PrayerRegPage/PrayerRegPage';

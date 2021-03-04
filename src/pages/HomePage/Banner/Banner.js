@@ -13,7 +13,7 @@ const Banner = () => {
                         paragraph="Registration"
                         button="Register"
                         leftWidth="100%"
-                        leftImage="images/banner/banner1.jpg"
+                        leftImage="images/banner/banner1.png"
                         padding="4rem 3vw 3rem 3vw"
                     />
                 </div>
@@ -23,7 +23,7 @@ const Banner = () => {
                         paragraph="Registration"
                         button="Coming Soon"
                         leftWidth="100%"
-                        leftImage="images/banner/banner2.jpg"
+                        leftImage="images/banner/banner2.png"
                         padding="4rem 3vw 3rem 3vw"
                     />
                 </div>
