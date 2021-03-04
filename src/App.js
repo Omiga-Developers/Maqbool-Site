@@ -2,7 +2,7 @@ import Header from './components/Header/Header';
 import { GlobalStyles } from './GlobalStyles.styles';
 import 'antd/dist/antd.css';
 import Banner from './components/Banner/Banner';
-import AboutUs from './components/AboutUs/AboutUs';
+import AboutUs from './pages/HomePage/AboutUs/AboutUs';
 import BottomBanner from './components/BottomBanner/BottomBanner';
 import PrayerWidget from './components/PrayerWidget/PrayerWidget';
 import Footer from './components/Footer/Footer';
@@ -10,6 +10,7 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-d
 import PrayerRegPage from './pages/PrayerRegPage/PrayerRegPage';
 import DonatePage from './pages/DonatePage/DonatePage';
 import AboutUsPage from './pages/AboutUsPage/AboutUsPage';
+import HomePage from './pages/HomePage/HomePage';
 
 function App() {
 	return (
@@ -28,17 +29,11 @@ function App() {
 						<AboutUsPage />
 					</Route>
 					<Route path="/home">
-						<Banner />
-						<PrayerWidget />
-						<AboutUs />
-						<BottomBanner />
+						<HomePage />
 					</Route>
 					<Route path="/">
 						<Redirect path="/home" />
-						<Banner />
-						<PrayerWidget />
-						<AboutUs />
-						<BottomBanner />
+						<HomePage />
 					</Route>
 				</Switch>
 			</div>
