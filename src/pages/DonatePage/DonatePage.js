@@ -31,6 +31,8 @@ const DonatePageMain = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+    font-family: 'Poppins';
+
 
 	.donate__title {
 		background-image: url(${donateCoverImage});
@@ -62,7 +64,7 @@ const DonatePageMain = styled.div`
 		font-weight: lighter;
 	}
 	.donate__body > h1 > span {
-		font-weight: bolder;
+		font-weight: 1000;
 	}
 	.donate__body > button {
 		margin-bottom: 100px;

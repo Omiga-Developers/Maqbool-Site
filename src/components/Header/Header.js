@@ -17,5 +17,6 @@ export default Header
 const HeaderWrapper = styled.div `
     display: flex;
     flex-direction: column;
+    font-family: 'Poppins';
     margin-bottom: 1.5rem;
 `

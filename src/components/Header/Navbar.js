@@ -27,6 +27,8 @@ const Navbar = () => {
 export default Navbar;
 
 const NavbarWrapper = styled.div`
+    font-family: 'Poppins';
+
 	> .ant-menu {
 		justify-content: space-around;
 		display: flex;

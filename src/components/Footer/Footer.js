@@ -53,6 +53,7 @@ const FooterWrapper = styled.div`
 	justify-content: space-between;
 	padding-top: 2rem;
 	padding-bottom: 2rem;
+    font-family: 'Poppins';
 
 	> div {
 		flex: 1;

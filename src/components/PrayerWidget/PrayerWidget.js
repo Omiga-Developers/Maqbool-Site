@@ -24,4 +24,6 @@ const PrayerWidgetWrapper = styled.div`
 	margin: 4rem;
 	display: flex;
 	justify-content: center;
+    font-family: 'Poppins';
+
 `;

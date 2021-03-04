@@ -34,6 +34,7 @@ const AboutUsWrapper = styled.div `
     margin: 4rem 0;
     display: flex;
     flex-direction: column;
+    font-family: 'Poppins';
 
     > div.title {
         display: flex;

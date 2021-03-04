@@ -144,6 +144,8 @@ function PrayerRegPage() {
 }
 
 const PrayerRegPageMain = styled.div`
+    font-family: 'Poppins';
+
 	.prayerReg__title {
 		background-image: url(${prayerCoverImage});
 		background-repeat: no-repeat;

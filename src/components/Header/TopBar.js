@@ -15,6 +15,8 @@ export default TopBar
 const TopBarWrapper = styled.div `
     display: flex;
     justify-content: center;
+    font-family: 'Poppins';
+
 
     > img {
         width: 15rem;

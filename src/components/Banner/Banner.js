@@ -35,5 +35,6 @@ const Banner = () => {
 export default Banner
 
 const BannerWrapper = styled.div `
+    font-family: 'Poppins';
     margin-bottom: 4rem;
 `

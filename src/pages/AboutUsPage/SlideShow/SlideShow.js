@@ -22,6 +22,8 @@ function SlideShow() {
 }
 
 const SlideShowMain = styled.div`
+    font-family: 'Poppins';
+
 	.slideShowImage {
 		width: 500px;
 		height: 450px;

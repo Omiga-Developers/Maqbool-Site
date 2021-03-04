@@ -28,6 +28,8 @@ function AboutUsPage() {
 }
 
 const AboutUsPageMain = styled.div`
+    font-family: 'Poppins';
+
 	.aboutUs__title {
 		background-image: url(${aboutCoverImage});
 		background-repeat: no-repeat;

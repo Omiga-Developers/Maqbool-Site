@@ -26,6 +26,7 @@ export default BottomBannerItem
 
 const BottomBannerItemWrapper = styled.div `
     display: flex;
+    font-family: 'Poppins';
 
     div.bannerItem__left {
         display: flex;

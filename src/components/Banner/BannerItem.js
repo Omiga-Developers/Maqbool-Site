@@ -22,6 +22,7 @@ export default BannerItem
 
 const BannerItemWrapper = styled.div `
     display: flex;
+    font-family: 'Poppins';
 
     div.bannerItem__left {
         display: flex;
