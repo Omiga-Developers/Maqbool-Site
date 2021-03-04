@@ -49,6 +49,7 @@ export default Footer;
 const FooterWrapper = styled.div`
 	color: #ccc;
 	background-color: #045762;
+	border-top-left-radius: 130px;
 	display: flex;
 	justify-content: space-between;
 	padding-top: 2rem;

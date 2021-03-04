@@ -6,7 +6,7 @@ import { Carousel } from 'antd'
 const Banner = () => {
     return (
         <BannerWrapper>
-            <Carousel autoplaySpeed={10000} autoplay>
+            <Carousel autoplaySpeed={5000}  autoplay>
                 <div>
                     <BannerItem 
                         title="Jum'uah"

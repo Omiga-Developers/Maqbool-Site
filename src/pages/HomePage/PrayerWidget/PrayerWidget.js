@@ -53,6 +53,7 @@ const PrayerWidgetWrapper = styled.div`
 		font-family: 'Poppins';
 	}
 	.prayer__title > h2 {
+        font-weight: bold !important;
 		font-size: 2rem;
 		margin-bottom: 30px;
 		color: #045762;

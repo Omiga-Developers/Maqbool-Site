@@ -46,12 +46,14 @@ const BottomBannerItemWrapper = styled.div `
     div.bannerItem__leftTop > h2 {
         font-size: 4rem;
         color: #045762;
+        font-weight: bold !important;
         line-height: 0.1;
         margin-bottom: 0;
     }
 
     div.bannerItem__leftTop > p {
         font-size: 4rem;
+        font-weight: lighter !important;
         color: #045762;
     }
 
