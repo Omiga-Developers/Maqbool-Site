@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import Logo from './logo.svg';
 import { Link } from 'react-router-dom';
 
-
 const Footer = () => {
 	return (
 		<FooterWrapper>
@@ -23,21 +22,30 @@ const Footer = () => {
 			<div className="right">
 				<div>
 					<p>
-						<Link to="/home">Home</Link>
+						<Link to="/home" target="_top">
+							Home
+						</Link>
 					</p>
-                    <p>
-						<Link to="/about-us">About Us</Link>
+					<p>
+						<Link to="/about-us" target="_top">
+							About Us
+						</Link>
 					</p>
-                    <p>
-						<Link to="/donate">Donate</Link>
+					<p>
+						<Link to="/donate" target="_top">
+							Donate
+						</Link>
 					</p>
-                    <p>
-						<Link to="/prayer-registration">Prayer Registration</Link>
+					<p>
+						<Link to="/prayer-registration" target="_top">
+							Prayer Registration
+						</Link>
 					</p>
-                    <p>
-						<Link to="/home">Virtual Tour</Link>
+					<p>
+						<Link to="/home" target="_top">
+							Virtual Tour
+						</Link>
 					</p>
-				
 				</div>
 			</div>
 		</FooterWrapper>
@@ -54,7 +62,7 @@ const FooterWrapper = styled.div`
 	justify-content: space-between;
 	padding-top: 2rem;
 	padding-bottom: 2rem;
-    font-family: 'Poppins';
+	font-family: 'Poppins';
 
 	> div {
 		flex: 1;
@@ -84,7 +92,7 @@ const FooterWrapper = styled.div`
 		width: 100%;
 		padding-left: 5vw;
 	}
-	> div.right > div> p > a {
+	> div.right > div > p > a {
 		color: white;
 	}
 

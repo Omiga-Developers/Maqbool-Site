@@ -1,25 +1,26 @@
-import React from 'react'
-import styled from 'styled-components'
-import Logo from './logo.svg'
+import React from 'react';
+import styled from 'styled-components';
+import Logo from './logo.svg';
+import { Link } from 'react-router-dom';
+import { Menu } from 'antd';
 
 const TopBar = () => {
-    return (
-        <TopBarWrapper>
-            <img src={Logo} alt="Logo" />
-        </TopBarWrapper>
-    )
-}
+	return (
+		<TopBarWrapper>
+			<img src={Logo} alt="Logo" />
+		</TopBarWrapper>
+	);
+};
 
-export default TopBar
+export default TopBar;
 
-const TopBarWrapper = styled.div `
-    display: flex;
-    justify-content: center;
-    font-family: 'Poppins';
+const TopBarWrapper = styled.div`
+	display: flex;
+	justify-content: center;
+	font-family: 'Poppins';
 
-
-    > img {
-        width: 15rem;
-        object-fit: contain;
-    }
-`
+	>  img {
+		width: 15rem;
+		object-fit: contain;
+	}
+`;
