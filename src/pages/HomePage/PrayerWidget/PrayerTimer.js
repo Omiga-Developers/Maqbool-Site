@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Datetime from 'react-datetime';
 import TimePray from './TimePray';
-import { Input } from 'antd';
+import { Button, Input } from 'antd';
 
 function PrayerTimer() {
 	const [displayFajr, setDisplayFajr] = useState(false);
@@ -13,8 +13,10 @@ function PrayerTimer() {
 	const [displayIsha, setDisplayIsha] = useState(false);
 	const [countDownValue, setCountDownValue] = useState();
 
+	const [city, setCity] = useState('Colombo');
+
 	const [prayerDetails, setPrayerDetails] = useState();
-	const PRAYER_TIME_API = 'https://api.pray.zone/v2/times/today.json?city=colombo';
+	const PRAYER_TIME_API = 'https://api.pray.zone/v2/times/today.json?city=' + city;
 	const LOADING_GIF_URL = 'https://i.stack.imgur.com/UUjhE.gif';
 	const MONTHS = [
 		'January',
@@ -31,6 +33,15 @@ function PrayerTimer() {
 		'December',
 	];
 
+	const handleUpdatePrayerDetais = () => {
+		// This is fetching the exchange rate API details
+		fetch(PRAYER_TIME_API)
+			.then((res) => res.json())
+			.then((data) => {
+				// we have fetched all the prayers from the api
+				setPrayerDetails(data.results.datetime[0].times);
+			});
+	};
 	// fetching all the prayer details from a REST API
 	useEffect(() => {
 		// This is fetching the exchange rate API details
@@ -117,9 +128,17 @@ function PrayerTimer() {
 					{/* Title */}
 					<div className="topContainer">
 						<div>
-							<h1>Prayer Times in Colombo</h1>
+							<h1>Prayer Times in {city}</h1>
 							<div>
-								Enter City Name: <Input type="text" />
+								<p>Enter City Name: </p>
+								<Input
+									className="cityName"
+									type="text"
+									placeholder="City Name"
+									onChange={(e) => setCity(e.target.value)}
+									value={city}
+								/>
+								<Button onClick={handleUpdatePrayerDetais}>Search</Button>
 							</div>
 						</div>
 						<h3>
@@ -186,7 +205,9 @@ const PrayerTimerContainer = styled.div`
 		object-fit: contain;
 		height: 100px;
 	}
-
+	.cityName {
+		width: 250px;
+	}
 	.topContainer,
 	.prayerList {
 		display: flex;
