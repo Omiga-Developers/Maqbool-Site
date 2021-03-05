@@ -12,30 +12,6 @@ const PrayerWidget = () => {
 			</div>
 
 			<div className="prayer__details">
-				{/* <iframe
-					id="g2hFrame"
-					className="prayer__item"
-					title="islamic-calendar"
-					style={{ height: '358px', border: '1px solid #ddd' }}
-					scrolling="no"
-					src="https://www.islamicfinder.org/islamic-calendar/widgetGregorian?type=Gregorian"
-				/>
-				<iframe
-					id="iframe"
-					title="prayerWidget"
-					className="prayer__item"
-					style={{ height: '358px', border: '1px solid #ddd' }}
-					scrolling="no"
-					src="https://www.islamicfinder.org/prayer-widget/"
-				/>
-				<iframe
-					id="days"
-					title="islamic-special-days"
-					className="prayer__item"
-					style={{ height: '358px', border: '1px solid #ddd' }}
-					scrolling="no"
-					src="https://www.islamicfinder.org/specialislamicdays"
-				/> */}
 				<PrayerTimer />
 			</div>
 		</PrayerWidgetWrapper>

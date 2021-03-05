@@ -45,12 +45,14 @@ function PrayerTimer() {
 					</div>
 
 					{/* list of prayer */}
-					<TimePray name="Fajr" time={prayerDetails?.Fajr} />
-					<TimePray name="Sunrise" time={prayerDetails?.Sunrise} />
-					<TimePray name="Dhuhr" time={prayerDetails?.Dhuhr} />
-					<TimePray name="Asr" time={prayerDetails?.Asr} />
-					<TimePray name="Maghrib" time={prayerDetails?.Maghrib} />
-					<TimePray name="Isha" time={prayerDetails?.Isha} />
+					<div className="prayerList">
+						<TimePray name="Fajr" time={prayerDetails?.Fajr} />
+						<TimePray name="Sunrise" time={prayerDetails?.Sunrise} />
+						<TimePray name="Dhuhr" time={prayerDetails?.Dhuhr} />
+						<TimePray name="Asr" time={prayerDetails?.Asr} />
+						<TimePray name="Maghrib" time={prayerDetails?.Maghrib} />
+						<TimePray name="Isha" time={prayerDetails?.Isha} />
+					</div>
 				</div>
 			) : (
 				<div className="loadingImage">
@@ -74,10 +76,15 @@ const PrayerTimerContainer = styled.div`
 		height: 100px;
 	}
 
-	.topContainer {
+	.topContainer,
+	.prayerList {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
 	}
+    .prayerList{
+        flex-wrap: wrap;
+        margin-top: 50px;
+    }
 `;
 export default PrayerTimer;
