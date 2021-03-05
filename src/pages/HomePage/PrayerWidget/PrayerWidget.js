@@ -1,16 +1,18 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import PrayerTimer from "./PrayerTimer"
 
 const PrayerWidget = () => {
+	
 	return (
 		<PrayerWidgetWrapper>
 			<div className="prayer__title">
 				<h2>- Prayer Details -</h2>
-				<small>(prayer times will be updated shortly)</small>
+				{/* <small>(prayer times will be updated shortly)</small> */}
 			</div>
 
 			<div className="prayer__details">
-				<iframe
+				{/* <iframe
 					id="g2hFrame"
 					className="prayer__item"
 					title="islamic-calendar"
@@ -33,7 +35,8 @@ const PrayerWidget = () => {
 					style={{ height: '358px', border: '1px solid #ddd' }}
 					scrolling="no"
 					src="https://www.islamicfinder.org/specialislamicdays"
-				/>
+				/> */}
+				<PrayerTimer />
 			</div>
 		</PrayerWidgetWrapper>
 	);
