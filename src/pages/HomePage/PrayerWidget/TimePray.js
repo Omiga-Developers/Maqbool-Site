@@ -54,7 +54,7 @@ const TimePrayContainer = styled.div`
 		flex-direction: column;
 		border: 1px lightgrey solid;
 		width: 180px;
-		background-color: #f2f2f2;
+		background-color: white;
 		border-radius: 10px;
 		padding: 18px;
 		font-size: 1rem;
