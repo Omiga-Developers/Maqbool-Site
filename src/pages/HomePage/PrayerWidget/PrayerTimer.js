@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Datetime from 'react-datetime';
+import TimePray from './TimePray';
 
 function PrayerTimer() {
 	const [prayerDetails, setPrayerDetails] = useState();
@@ -44,9 +45,17 @@ function PrayerTimer() {
 					</div>
 
 					{/* list of prayer */}
+					<TimePray name="Fajr" time={prayerDetails?.Fajr} />
+					<TimePray name="Sunrise" time={prayerDetails?.Sunrise} />
+					<TimePray name="Dhuhr" time={prayerDetails?.Dhuhr} />
+					<TimePray name="Asr" time={prayerDetails?.Asr} />
+					<TimePray name="Maghrib" time={prayerDetails?.Maghrib} />
+					<TimePray name="Isha" time={prayerDetails?.Isha} />
 				</div>
 			) : (
-				<img src={LOADING_GIF_URL} alt="" />
+				<div className="loadingImage">
+					<img src={LOADING_GIF_URL} alt="" />
+				</div>
 			)}
 		</PrayerTimerContainer>
 	);
@@ -55,10 +64,20 @@ const PrayerTimerContainer = styled.div`
 	border: 1px red solid;
 	width: 100%;
 
-    .topContainer{
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
+	.loadingImage {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.loadingImage > img {
+		object-fit: contain;
+		height: 100px;
+	}
+
+	.topContainer {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
 `;
 export default PrayerTimer;
