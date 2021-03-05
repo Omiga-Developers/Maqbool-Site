@@ -84,6 +84,8 @@ const PrayerTimerContainer = styled.div`
 	}
     .prayerList{
         flex-wrap: wrap;
+		justify-content: space-evenly !important;
+
         margin-top: 50px;
     }
 `;

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import Countdown from 'react-countdown';
 
 function TimePray({ name, time }) {
 	const [displayCountDown, setDisplayCountDown] = useState(true);
@@ -29,6 +30,7 @@ function TimePray({ name, time }) {
 					<p>Upcoming Prayer</p>
 					<p className="name">{name}</p>
 					{/* count down */}
+                    <Countdown date={Date.now() + 1000000} />
 					<p className="time">{tConvert(time)}</p>
 				</div>
 			) : (
@@ -46,6 +48,8 @@ const TimePrayContainer = styled.div`
         background-image: url('https://wallup.net/wp-content/uploads/2017/03/28/363382-trees-sunlight-dark-nature-748x421.jpg');
 		background-repeat: no-repeat;
 		background-size: cover;
+		width: 200px !important;
+        padding: 20px !important;
         color: white;
 		/* padding: 100px 150px; */
 		background-position: center;
@@ -53,6 +57,7 @@ const TimePrayContainer = styled.div`
 		/* transform: scaleX(-1); */
 	}
 	.notCurrent {
+        margin: 10px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
