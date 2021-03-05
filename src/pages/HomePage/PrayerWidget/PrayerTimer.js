@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Datetime from 'react-datetime';
 import TimePray from './TimePray';
+import { Input } from 'antd';
 
 function PrayerTimer() {
 	const [displayFajr, setDisplayFajr] = useState(false);
@@ -59,7 +60,6 @@ function PrayerTimer() {
 
 		let currentTime = parseInt(new Date().getHours()) * 60 + parseInt(new Date().getMinutes());
 
-
 		if (currentTime * 60000 >= FajrTimeInMins * 60000 && currentTime * 60000 <= SunriseTimeInMins * 60000) {
 			setDisplaySunrise(true);
 			setDisplayFajr(false);
@@ -67,8 +67,7 @@ function PrayerTimer() {
 			setDisplayDhuhr(false);
 			setDisplayMaghrib(false);
 			setDisplayIsha(false);
-			setCountDownValue((SunriseTimeInMins * 60000) - (currentTime * 60000));
-
+			setCountDownValue(SunriseTimeInMins * 60000 - currentTime * 60000);
 		} else if (currentTime * 60000 >= SunriseTimeInMins * 60000 && currentTime * 60000 <= DhuhrTimeInMins * 60000) {
 			setDisplaySunrise(false);
 			setDisplayFajr(false);
@@ -76,8 +75,7 @@ function PrayerTimer() {
 			setDisplayDhuhr(true);
 			setDisplayMaghrib(false);
 			setDisplayIsha(false);
-			setCountDownValue((DhuhrTimeInMins * 60000) - (currentTime * 60000));
-
+			setCountDownValue(DhuhrTimeInMins * 60000 - currentTime * 60000);
 		} else if (currentTime * 60000 >= DhuhrTimeInMins * 60000 && currentTime * 60000 <= AsrTimeInMins * 60000) {
 			setDisplaySunrise(false);
 			setDisplayFajr(false);
@@ -85,8 +83,7 @@ function PrayerTimer() {
 			setDisplayDhuhr(false);
 			setDisplayMaghrib(false);
 			setDisplayIsha(false);
-			setCountDownValue((AsrTimeInMins * 60000) - (currentTime * 60000));
-
+			setCountDownValue(AsrTimeInMins * 60000 - currentTime * 60000);
 		} else if (currentTime * 60000 >= AsrTimeInMins * 60000 && currentTime * 60000 <= MaghribTimeInMins * 60000) {
 			setDisplaySunrise(false);
 			setDisplayFajr(false);
@@ -94,8 +91,7 @@ function PrayerTimer() {
 			setDisplayDhuhr(false);
 			setDisplayMaghrib(true);
 			setDisplayIsha(false);
-			setCountDownValue((MaghribTimeInMins * 60000) - (currentTime * 60000));
-
+			setCountDownValue(MaghribTimeInMins * 60000 - currentTime * 60000);
 		} else if (currentTime * 60000 >= MaghribTimeInMins * 60000 && currentTime * 60000 <= IshaTimeInMins * 60000) {
 			setDisplaySunrise(false);
 			setDisplayFajr(false);
@@ -103,8 +99,7 @@ function PrayerTimer() {
 			setDisplayDhuhr(false);
 			setDisplayMaghrib(false);
 			setDisplayIsha(true);
-			setCountDownValue((IshaTimeInMins * 60000) - (currentTime * 60000));
-
+			setCountDownValue(IshaTimeInMins * 60000 - currentTime * 60000);
 		} else if (currentTime * 60000 >= IshaTimeInMins * 60000 && currentTime * 60000 <= FajrTimeInMins * 60000) {
 			setDisplaySunrise(false);
 			setDisplayFajr(true);
@@ -112,8 +107,7 @@ function PrayerTimer() {
 			setDisplayDhuhr(false);
 			setDisplayMaghrib(false);
 			setDisplayIsha(false);
-			setCountDownValue((FajrTimeInMins * 60000) - (currentTime * 60000));
-
+			setCountDownValue(FajrTimeInMins * 60000 - currentTime * 60000);
 		}
 	}, [prayerDetails]);
 	return (
@@ -122,7 +116,12 @@ function PrayerTimer() {
 				<div>
 					{/* Title */}
 					<div className="topContainer">
-						<h1>Prayer Times in Colombo</h1>
+						<div>
+							<h1>Prayer Times in Colombo</h1>
+							<div>
+								Enter City Name: <Input type="text" />
+							</div>
+						</div>
 						<h3>
 							{new Date().getDay()} {MONTHS[new Date().getMonth()]} {new Date().getFullYear()}
 						</h3>
@@ -130,12 +129,37 @@ function PrayerTimer() {
 
 					{/* list of prayer */}
 					<div className="prayerList">
-						<TimePray name="Fajr" time={prayerDetails?.Fajr} displayCurrent={displayFajr} countDownTime = {countDownValue}/>
-						<TimePray name="Sunrise" time={prayerDetails?.Sunrise} displayCurrent={displaySunrise} countDownTime = {countDownValue}/>
-						<TimePray name="Dhuhr" time={prayerDetails?.Dhuhr} displayCurrent={displayDhuhr} countDownTime = {countDownValue}/>
-						<TimePray name="Asr" time={prayerDetails?.Asr} displayCurrent={displayAsr} countDownTime = {countDownValue}/>
-						<TimePray name="Maghrib" time={prayerDetails?.Maghrib} displayCurrent={displayMaghrib} countDownTime = {countDownValue}/>
-						<TimePray name="Isha" time={prayerDetails?.Isha} displayCurrent={displayIsha} countDownTime = {countDownValue}/>
+						<TimePray
+							name="Fajr"
+							time={prayerDetails?.Fajr}
+							displayCurrent={displayFajr}
+							countDownTime={countDownValue}
+						/>
+						<TimePray
+							name="Sunrise"
+							time={prayerDetails?.Sunrise}
+							displayCurrent={displaySunrise}
+							countDownTime={countDownValue}
+						/>
+						<TimePray
+							name="Dhuhr"
+							time={prayerDetails?.Dhuhr}
+							displayCurrent={displayDhuhr}
+							countDownTime={countDownValue}
+						/>
+						<TimePray name="Asr" time={prayerDetails?.Asr} displayCurrent={displayAsr} countDownTime={countDownValue} />
+						<TimePray
+							name="Maghrib"
+							time={prayerDetails?.Maghrib}
+							displayCurrent={displayMaghrib}
+							countDownTime={countDownValue}
+						/>
+						<TimePray
+							name="Isha"
+							time={prayerDetails?.Isha}
+							displayCurrent={displayIsha}
+							countDownTime={countDownValue}
+						/>
 					</div>
 				</div>
 			) : (
@@ -147,7 +171,10 @@ function PrayerTimer() {
 	);
 }
 const PrayerTimerContainer = styled.div`
-	border: 1px red solid;
+	border: 1px whitesmoke solid;
+	border-radius: 20px;
+	background-color: whitesmoke;
+	padding: 20px;
 	width: 100%;
 
 	.loadingImage {
