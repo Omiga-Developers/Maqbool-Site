@@ -8,7 +8,6 @@ const PrayerWidget = () => {
 		<PrayerWidgetWrapper>
 			<div className="prayer__title">
 				<h2>- Prayer Details -</h2>
-				{/* <small>(prayer times will be updated shortly)</small> */}
 			</div>
 
 			<div className="prayer__details">

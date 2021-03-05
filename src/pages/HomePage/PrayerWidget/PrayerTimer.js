@@ -4,6 +4,14 @@ import Datetime from 'react-datetime';
 import TimePray from './TimePray';
 
 function PrayerTimer() {
+	const [displayFajr, setDisplayFajr] = useState(false);
+	const [displaySunrise, setDisplaySunrise] = useState(false);
+	const [displayDhuhr, setDisplayDhuhr] = useState(false);
+	const [displayAsr, setdisplayAsr] = useState(false);
+	const [displayMaghrib, setDisplayMaghrib] = useState(false);
+	const [displayIsha, setDisplayIsha] = useState(false);
+	const [countDownValue, setCountDownValue] = useState();
+
 	const [prayerDetails, setPrayerDetails] = useState();
 	const PRAYER_TIME_API = 'https://api.pray.zone/v2/times/today.json?city=colombo';
 	const LOADING_GIF_URL = 'https://i.stack.imgur.com/UUjhE.gif';
@@ -32,6 +40,82 @@ function PrayerTimer() {
 				setPrayerDetails(data.results.datetime[0].times);
 			});
 	}, []);
+
+	useEffect(() => {
+		let FajrTimeInMins = parseInt(prayerDetails?.Fajr.split(':')[0]) * 60 + parseInt(prayerDetails?.Fajr.split(':')[1]);
+
+		let SunriseTimeInMins =
+			parseInt(prayerDetails?.Sunrise.split(':')[0]) * 60 + parseInt(prayerDetails?.Sunrise.split(':')[1]);
+
+		let DhuhrTimeInMins =
+			parseInt(prayerDetails?.Dhuhr.split(':')[0]) * 60 + parseInt(prayerDetails?.Dhuhr.split(':')[1]);
+
+		let AsrTimeInMins = parseInt(prayerDetails?.Asr.split(':')[0]) * 60 + parseInt(prayerDetails?.Asr.split(':')[1]);
+
+		let MaghribTimeInMins =
+			parseInt(prayerDetails?.Maghrib.split(':')[0]) * 60 + parseInt(prayerDetails?.Maghrib.split(':')[1]);
+
+		let IshaTimeInMins = parseInt(prayerDetails?.Isha.split(':')[0]) * 60 + parseInt(prayerDetails?.Isha.split(':')[1]);
+
+		let currentTime = parseInt(new Date().getHours()) * 60 + parseInt(new Date().getMinutes());
+
+
+		if (currentTime * 60000 >= FajrTimeInMins * 60000 && currentTime * 60000 <= SunriseTimeInMins * 60000) {
+			setDisplaySunrise(true);
+			setDisplayFajr(false);
+			setdisplayAsr(false);
+			setDisplayDhuhr(false);
+			setDisplayMaghrib(false);
+			setDisplayIsha(false);
+			setCountDownValue((SunriseTimeInMins * 60000) - (currentTime * 60000));
+
+		} else if (currentTime * 60000 >= SunriseTimeInMins * 60000 && currentTime * 60000 <= DhuhrTimeInMins * 60000) {
+			setDisplaySunrise(false);
+			setDisplayFajr(false);
+			setdisplayAsr(false);
+			setDisplayDhuhr(true);
+			setDisplayMaghrib(false);
+			setDisplayIsha(false);
+			setCountDownValue((DhuhrTimeInMins * 60000) - (currentTime * 60000));
+
+		} else if (currentTime * 60000 >= DhuhrTimeInMins * 60000 && currentTime * 60000 <= AsrTimeInMins * 60000) {
+			setDisplaySunrise(false);
+			setDisplayFajr(false);
+			setdisplayAsr(true);
+			setDisplayDhuhr(false);
+			setDisplayMaghrib(false);
+			setDisplayIsha(false);
+			setCountDownValue((AsrTimeInMins * 60000) - (currentTime * 60000));
+
+		} else if (currentTime * 60000 >= AsrTimeInMins * 60000 && currentTime * 60000 <= MaghribTimeInMins * 60000) {
+			setDisplaySunrise(false);
+			setDisplayFajr(false);
+			setdisplayAsr(false);
+			setDisplayDhuhr(false);
+			setDisplayMaghrib(true);
+			setDisplayIsha(false);
+			setCountDownValue((MaghribTimeInMins * 60000) - (currentTime * 60000));
+
+		} else if (currentTime * 60000 >= MaghribTimeInMins * 60000 && currentTime * 60000 <= IshaTimeInMins * 60000) {
+			setDisplaySunrise(false);
+			setDisplayFajr(false);
+			setdisplayAsr(false);
+			setDisplayDhuhr(false);
+			setDisplayMaghrib(false);
+			setDisplayIsha(true);
+			setCountDownValue((IshaTimeInMins * 60000) - (currentTime * 60000));
+
+		} else if (currentTime * 60000 >= IshaTimeInMins * 60000 && currentTime * 60000 <= FajrTimeInMins * 60000) {
+			setDisplaySunrise(false);
+			setDisplayFajr(true);
+			setdisplayAsr(false);
+			setDisplayDhuhr(false);
+			setDisplayMaghrib(false);
+			setDisplayIsha(false);
+			setCountDownValue((FajrTimeInMins * 60000) - (currentTime * 60000));
+
+		}
+	}, [prayerDetails]);
 	return (
 		<PrayerTimerContainer>
 			{prayerDetails ? (
@@ -46,12 +130,12 @@ function PrayerTimer() {
 
 					{/* list of prayer */}
 					<div className="prayerList">
-						<TimePray name="Fajr" time={prayerDetails?.Fajr} />
-						<TimePray name="Sunrise" time={prayerDetails?.Sunrise} />
-						<TimePray name="Dhuhr" time={prayerDetails?.Dhuhr} />
-						<TimePray name="Asr" time={prayerDetails?.Asr} />
-						<TimePray name="Maghrib" time={prayerDetails?.Maghrib} />
-						<TimePray name="Isha" time={prayerDetails?.Isha} />
+						<TimePray name="Fajr" time={prayerDetails?.Fajr} displayCurrent={displayFajr} countDownTime = {countDownValue}/>
+						<TimePray name="Sunrise" time={prayerDetails?.Sunrise} displayCurrent={displaySunrise} countDownTime = {countDownValue}/>
+						<TimePray name="Dhuhr" time={prayerDetails?.Dhuhr} displayCurrent={displayDhuhr} countDownTime = {countDownValue}/>
+						<TimePray name="Asr" time={prayerDetails?.Asr} displayCurrent={displayAsr} countDownTime = {countDownValue}/>
+						<TimePray name="Maghrib" time={prayerDetails?.Maghrib} displayCurrent={displayMaghrib} countDownTime = {countDownValue}/>
+						<TimePray name="Isha" time={prayerDetails?.Isha} displayCurrent={displayIsha} countDownTime = {countDownValue}/>
 					</div>
 				</div>
 			) : (
@@ -82,11 +166,11 @@ const PrayerTimerContainer = styled.div`
 		align-items: center;
 		justify-content: space-between;
 	}
-    .prayerList{
-        flex-wrap: wrap;
+	.prayerList {
+		flex-wrap: wrap;
 		justify-content: space-evenly !important;
 
-        margin-top: 50px;
-    }
+		margin-top: 50px;
+	}
 `;
 export default PrayerTimer;
