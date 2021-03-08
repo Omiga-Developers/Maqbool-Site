@@ -142,7 +142,7 @@ function PrayerTimer() {
 							</div>
 						</div>
 						<h3>
-							{new Date().getDay()} {MONTHS[new Date().getMonth()]} {new Date().getFullYear()}
+							{new Date().getDate()} {MONTHS[new Date().getMonth()]} {new Date().getFullYear()}
 						</h3>
 					</div>
 

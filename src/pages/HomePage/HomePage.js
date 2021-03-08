@@ -9,7 +9,7 @@ function HomePage() {
 	return (
 		<HomePageContainer>
 			<Banner />
-			<p className="update__message">(This will be updated soon in time In Sha Allah)</p>
+			{/* <p className="update__message">(This will be updated soon in time In Sha Allah)</p> */}
 			<PrayerWidget />
 			<AboutUs />
 			<BottomBanner />
@@ -19,6 +19,7 @@ function HomePage() {
 const HomePageContainer = styled.div`
 	animation: fadeInAnimation ease 1s;
 	font-family: 'Poppins';
+	
 
 	.update__message {
 		display: flex;

@@ -1,7 +1,7 @@
 import { Menu } from 'antd';
 import React from 'react';
-import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
 const Navbar = () => {
 	return (
@@ -30,6 +30,7 @@ export default Navbar;
 
 const NavbarWrapper = styled.div`
 	font-family: 'Poppins';
+	margin-bottom: -10px;
 
 	> .ant-menu {
 		justify-content: space-around;
