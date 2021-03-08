@@ -17,7 +17,9 @@ const Navbar = () => {
 					<Link to="/donate">Donate</Link>
 				</Menu.Item>
 				<Menu.Item>
-					<Link to="/prayer-registration">Prayers Registration</Link>
+					<a rel="noreferrer" href="https://maqbool-jumuah-registration.firebaseapp.com/" target="_blank">
+						Prayers Registration
+					</a>
 				</Menu.Item>
 			</Menu>
 		</NavbarWrapper>
@@ -27,7 +29,7 @@ const Navbar = () => {
 export default Navbar;
 
 const NavbarWrapper = styled.div`
-    font-family: 'Poppins';
+	font-family: 'Poppins';
 
 	> .ant-menu {
 		justify-content: space-around;
@@ -37,21 +39,21 @@ const NavbarWrapper = styled.div`
 
 	> .ant-menu > li > a {
 		font-size: 1.6rem;
-		color:  #045762 !important;
+		color: #045762 !important;
 		font-weight: 600;
 		padding: 0.2rem 0.8rem !important;
 	}
 
-	.ant-menu-item-selected  {
+	.ant-menu-item-selected {
 		border: 1px solid white;
 		box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.25);
-		color:  #045762 !important;
+		color: #045762 !important;
 		border-bottom: none !important;
 		border-radius: 0.5rem;
 	}
 
-	.ant-menu-item-active  {
-		border-color:  #045762 !important;
-		color:  #045762 !important;
+	.ant-menu-item-active {
+		border-color: #045762 !important;
+		color: #045762 !important;
 	}
 `;

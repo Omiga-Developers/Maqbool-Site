@@ -5,9 +5,11 @@ import FadeIn from 'react-fade-in';
 const AboutUs = () => {
 	return (
 		<AboutUsWrapper>
+
 			<div className="title">
 				<h2>- About Us -</h2>
 			</div>
+			<p className="update__message" style={{marginBottom: '20px'}}>(This will be updated soon in time In Sha Allah)</p>
 
 			<div className="lower">
 				<div className="lower__left">

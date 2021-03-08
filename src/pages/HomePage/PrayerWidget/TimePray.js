@@ -42,7 +42,7 @@ const TimePrayContainer = styled.div`
 		background-repeat: no-repeat;
 		background-size: cover;
 		width: 200px !important;
-		padding: 20px !important;
+		padding: 15px !important;
 		color: white;
 		background-position: center;
 	}
@@ -53,7 +53,7 @@ const TimePrayContainer = styled.div`
 		justify-content: center;
 		flex-direction: column;
 		border: 1px lightgrey solid;
-		width: 180px;
+		width: 150px;
 		background-color: white;
 		border-radius: 10px;
 		padding: 18px;

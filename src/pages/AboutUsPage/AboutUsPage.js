@@ -12,6 +12,8 @@ function AboutUsPage() {
 				<p>About</p> <p>Us</p>
 			</div>
 
+			<p className="update__message" style={{marginTop: '20px'}}>(This will be updated soon in time In Sha Allah)</p>
+
 			{/* description and image */}
 			<div className="aboutUs__description">
 				<p>
@@ -38,6 +40,12 @@ const AboutUsPageMain = styled.div`
 		100% {
 			opacity: 1;
 		}
+	}
+	.update__message {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: #045762;
 	}
 
 	.aboutUs__title {
