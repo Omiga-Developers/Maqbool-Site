@@ -15,6 +15,7 @@ const BannerItem = ({ title, paragraph, button, leftImage, leftWidth, padding })
 				</div>
 				<div className="bannerItem__leftBottom">
 					<Button
+                        disabled = {button === 'Register'}
 						onClick={() => {
 							if (button === 'Register') {
                                 window.open('https://maqbool-jumuah-registration.firebaseapp.com/', '_blank');
