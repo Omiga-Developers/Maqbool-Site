@@ -37,9 +37,9 @@ const Footer = () => {
 						</Link>
 					</p>
 					<p>
-						<Link to="/prayer-registration" target="_top">
-							Prayer Registration
-						</Link>
+						<a rel="noreferrer" href="https://maqbool-jumuah-registration.firebaseapp.com/" target="_blank">
+							Prayers Registration
+						</a>
 					</p>
 					<p>
 						<Link to="/home" target="_top">

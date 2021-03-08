@@ -1,19 +1,21 @@
 import React, { useEffect, useState } from 'react';
+import { Fade } from 'react-awesome-reveal';
 import styled from 'styled-components';
-import PrayerTimer from "./PrayerTimer"
+import PrayerTimer from './PrayerTimer';
 
 const PrayerWidget = () => {
-	
 	return (
-		<PrayerWidgetWrapper>
-			<div className="prayer__title">
-				<h2>- Prayer Details -</h2>
-			</div>
+		<Fade cascade direction="left" triggerOnce>
+			<PrayerWidgetWrapper>
+				<div className="prayer__title">
+					<h2>- Prayer Details -</h2>
+				</div>
 
-			<div className="prayer__details">
-				<PrayerTimer />
-			</div>
-		</PrayerWidgetWrapper>
+				<div className="prayer__details">
+					<PrayerTimer />
+				</div>
+			</PrayerWidgetWrapper>
+		</Fade>
 	);
 };
 

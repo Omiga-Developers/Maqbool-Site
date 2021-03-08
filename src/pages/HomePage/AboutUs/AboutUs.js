@@ -5,7 +5,7 @@ import FadeIn from 'react-fade-in';
 const AboutUs = () => {
 	return (
 		<AboutUsWrapper>
-
+z
 			<div className="title">
 				<h2>- About Us -</h2>
 			</div>

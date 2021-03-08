@@ -4,22 +4,29 @@ import Banner from './Banner/Banner';
 import BottomBanner from './BottomBanner/BottomBanner';
 import PrayerWidget from './PrayerWidget/PrayerWidget';
 import styled from 'styled-components';
+import { Fade } from 'react-awesome-reveal';
 
 function HomePage() {
 	return (
 		<HomePageContainer>
-			<Banner />
+			<Fade cascade direction="right" triggerOnce>
+				<Banner />
+			</Fade>
 			{/* <p className="update__message">(This will be updated soon in time In Sha Allah)</p> */}
 			<PrayerWidget />
-			<AboutUs />
-			<BottomBanner />
+
+			<Fade cascade direction="right" triggerOnce>
+				<AboutUs />
+			</Fade>
+			<Fade cascade direction="left" triggerOnce>
+				<BottomBanner />
+			</Fade>
 		</HomePageContainer>
 	);
 }
 const HomePageContainer = styled.div`
 	animation: fadeInAnimation ease 1s;
 	font-family: 'Poppins';
-	
 
 	.update__message {
 		display: flex;

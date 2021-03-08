@@ -4,26 +4,29 @@ import donateCoverImage from './image.jpg';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Button } from 'antd';
+import { Fade } from 'react-awesome-reveal';
 
 function DonatePage() {
 	const notify = () => toast('Coming Soon!');
 	return (
-		<DonatePageMain>
-			{/* bg image */}
-			<div className="donate__title">
-				<p>Donate</p>
-			</div>
+		<Fade cascade direction="right" triggerOnce>
+			<DonatePageMain>
+				{/* bg image */}
+				<div className="donate__title">
+					<p>Donate</p>
+				</div>
 
-			{/* donate option */}
-			<div className="donate__body">
-				<h1>
-					WE ARE <span>ALMOST</span> THERE
-				</h1>
+				{/* donate option */}
+				<div className="donate__body">
+					<h1>
+						WE ARE <span>ALMOST</span> THERE
+					</h1>
 
-				<button onClick={notify}>Donate</button>
-				<ToastContainer hideProgressBar={true} autoClose={3000}/>
-			</div>
-		</DonatePageMain>
+					<button onClick={notify}>Donate</button>
+					<ToastContainer hideProgressBar={true} autoClose={3000} />
+				</div>
+			</DonatePageMain>
+		</Fade>
 	);
 }
 
@@ -31,7 +34,7 @@ const DonatePageMain = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-    font-family: 'Poppins';
+	font-family: 'Poppins';
 	animation: fadeInAnimation ease 1s;
 
 	@keyframes fadeInAnimation {
@@ -42,7 +45,6 @@ const DonatePageMain = styled.div`
 			opacity: 1;
 		}
 	}
-
 
 	.donate__title {
 		background-image: url(${donateCoverImage});
@@ -81,18 +83,18 @@ const DonatePageMain = styled.div`
 		color: #045762;
 		background-color: #fff;
 		outline: none;
-        cursor: pointer;
-        font-size: 25px;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.12), 3px 1px 5px rgba(0,0,0,0.24);
+		cursor: pointer;
+		font-size: 25px;
+		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12), 3px 1px 5px rgba(0, 0, 0, 0.24);
 		border: 1px transparent solid;
-        transition: 0.5s ease-in-out;
+		transition: 0.5s ease-in-out;
 		border-radius: 20px;
 		padding: 5px 25px;
 		/* border: 1px red solid; */
 	}
-    .donate__body > button:hover {
-        border: 1px darkgreen solid;
-        transition: 0.2s ease-in-out;
+	.donate__body > button:hover {
+		border: 1px darkgreen solid;
+		transition: 0.2s ease-in-out;
 	}
 `;
 export default DonatePage;
