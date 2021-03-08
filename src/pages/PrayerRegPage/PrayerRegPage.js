@@ -1,21 +1,122 @@
-import { Form, Input } from 'antd';
-import React, { useState } from 'react';
+import { Button, Dropdown, Form, Input, Menu } from 'antd';
+import Modal from 'antd/lib/modal/Modal';
+import React, { useEffect, useState } from 'react';
+import { DownOutlined } from '@ant-design/icons';
 import styled from 'styled-components';
 import prayerCoverImage from './image.jpg';
+import db from '../../firebase';
 
 function PrayerRegPage() {
+	const [showModal, setShowModal] = useState(false);
+
+	//will hold the total counts
+	const [jammaathOneCount, setJamaathOneCount] = useState(0);
+	const [jammaathTwoCount, setJamaathTwoCount] = useState(0);
+	const [jammaathThreeCount, setJamaathThreeCount] = useState(0);
+
+	//will just be a temporary flag to toggle current counts
+	const [currentJammaathOne, setCurrentJamaathOne] = useState(0);
+	const [currentJammaathTwo, setCurrentJamaathTwo] = useState(0);
+	const [currentJammaathThree, setCurrentJamaathThree] = useState(0);
+
+	const [activeChoice, setActiveChoice] = useState('');
+
 	const [nicPassport, setNicPassport] = useState('');
 	const [email, setEmail] = useState('');
 	const [mobileNumber, setMobileNumber] = useState('');
 	const [fullName, setFullName] = useState('');
-	const [selectJamaathOption, setSelectJamaathOption] = useState('');
+	const [form] = Form.useForm();
 
 	const EMAIL_REGEX = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 	const PHONE_NUMBER_REGEX = /^[+]*[(]{0,1}[0-9]{1,3}[)]{0,1}[-\s\./0-9]*$/g;
 	const NAMES_REGEX = /^[a-z ,.'-]+$/i;
 
-	const onHandleRegister = () => {
-		alert('Registering...');
+	useEffect(() => {
+		//refetch counts
+		db.collection('Jamaath Counts');
+		db.collection('Jamaath Counts')?.onSnapshot((snapshot) => {
+			if (snapshot.docs.length > 0) {
+				setJamaathOneCount(snapshot.docs[0]?.data()['Jamaath 1']);
+				setJamaathTwoCount(snapshot.docs[0]?.data()['Jamaath 2']);
+				setJamaathThreeCount(snapshot.docs[0]?.data()['Jamaath 3']);
+			}
+		});
+	}, [jammaathOneCount, jammaathTwoCount, jammaathThreeCount]);
+
+	const handleJamaathOneChange = () => {
+		setActiveChoice('Jamaath 1');
+		setCurrentJamaathOne(1);
+		setCurrentJamaathTwo(0);
+		setCurrentJamaathThree(0);
+	};
+
+	const handleJamaathTwoChange = () => {
+		setActiveChoice('Jamaath 2');
+		setCurrentJamaathOne(0);
+		setCurrentJamaathTwo(1);
+		setCurrentJamaathThree(0);
+	};
+
+	const handleJamaathThreeChange = () => {
+		setActiveChoice('Jamaath 3');
+		setCurrentJamaathOne(0);
+		setCurrentJamaathTwo(0);
+		setCurrentJamaathThree(1);
+	};
+
+	const jamaathOptions = () => (
+		<Menu style={{ width: '250px' }}>
+			{(jammaathOneCount < 50 || jammaathOneCount === undefined) && (
+				<Menu.Item key="0">
+					<a onClick={handleJamaathOneChange}>Jamaath 1</a>
+				</Menu.Item>
+			)}
+			<Menu.Divider />
+			{(jammaathTwoCount < 50 || jammaathOneCount === undefined) && (
+				<Menu.Item key="1">
+					<a onClick={handleJamaathTwoChange}>Jamaath 2</a>
+				</Menu.Item>
+			)}
+			<Menu.Divider />
+			{(jammaathThreeCount < 50 || jammaathOneCount === undefined) && (
+				<Menu.Item key="2">
+					<a onClick={handleJamaathThreeChange}>Jamaath 3</a>
+				</Menu.Item>
+			)}
+		</Menu>
+	);
+
+	const onHandleRegister = async (e) => {
+		setShowModal(false);
+
+		//firebase
+		db.collection('Registered').add({
+			nicPassport,
+			email,
+			fullName,
+			mobileNumber,
+			JamaathChoice: activeChoice,
+			time: new Date().toUTCString(),
+		});
+
+		//jamaath counts stored in firebase
+		//delete all records and reupdate values
+		db.collection('Jamaath Counts')
+			.get()
+			.then((res) => res.forEach((element) => element.ref.delete()));
+
+		db.collection('Jamaath Counts').add({
+			'Jamaath 1': jammaathOneCount + currentJammaathOne,
+			'Jamaath 2': jammaathTwoCount + currentJammaathTwo,
+			'Jamaath 3': jammaathThreeCount + currentJammaathThree,
+		});
+
+		form.resetFields();
+		setActiveChoice('');
+		setNicPassport('');
+		setEmail('');
+		setMobileNumber();
+		setFullName('');
 	};
 
 	return (
@@ -45,7 +146,10 @@ function PrayerRegPage() {
 						className="prayerReg__bodyFormSection"
 						name="basic"
 						initialValues={{ remember: true }}
-						onFinish={onHandleRegister}
+						onFinish={() => setShowModal(true)}
+						requiredMark={false}
+						colon={false}
+						form={form}
 					>
 						<div>
 							<p>NIC/Passport Number</p>
@@ -90,7 +194,7 @@ function PrayerRegPage() {
 								name="fullName"
 								rules={[
 									{ required: true, message: 'Please enter your Full Name' },
-									{ pattern: PHONE_NUMBER_REGEX, message: 'Please enter a valid name!' },
+									{ pattern: NAMES_REGEX, message: 'Please enter a valid name!' },
 								]}
 							>
 								<Input id="fullName" onChange={(e) => setFullName(e.target.value)} />
@@ -123,28 +227,52 @@ function PrayerRegPage() {
 
 						<div className="JamaathOptions">
 							<p>Jamaath Options</p>
-							<div>
-								<select onChange={(e) => setSelectJamaathOption(e.target.value)}>
-									<option>Select an Option</option>
-									<option value="Option 1">Option 1</option>
-									<option value="Option 2">Option 2</option>
-									<option value="Option 3">Option 3</option>
-								</select>
+							<div style={{ width: '250px' }}>
+								<Dropdown overlay={jamaathOptions} trigger={['click']}>
+									<Button style={{ width: '100%', display: 'flex', justifyContent: 'space-between' }}>
+										<span>{activeChoice}</span>
+										<span>
+											<DownOutlined />
+										</span>
+									</Button>
+								</Dropdown>
 							</div>
 						</div>
 
-						<button htmlType="submit" className="prayerReg__bodyFormRegister">
-							Confirm Jamaath
-						</button>
+						<div className="contactUs__formBtn">
+							{(jammaathOneCount === 50 && jammaathTwoCount === 50 && jammaathThreeCount === 50) ||
+							!activeChoice ||
+							!nicPassport ||
+							!email ||
+							!mobileNumber ||
+							!fullName ? (
+								<button disabled htmlType="submit" className="prayerReg__bodyFormRegister">
+									Confirm Jamaath
+								</button>
+							) : (
+								<button htmlType="submit" className="prayerReg__bodyFormRegister">
+									Confirm Jamaath
+								</button>
+							)}
+						</div>
 					</Form>
 				</div>
 			</div>
+			<Modal
+				centered
+				visible={showModal}
+				title="Your response has been recorded"
+				onOk={onHandleRegister}
+				onCancel={onHandleRegister}
+			>
+				<p>Assalamu Alaikum {fullName}, your response has been recorded</p>
+			</Modal>
 		</PrayerRegPageMain>
 	);
 }
 
 const PrayerRegPageMain = styled.div`
-    font-family: 'Poppins';
+	font-family: 'Poppins';
 	animation: fadeInAnimation ease 1s;
 
 	@keyframes fadeInAnimation {
@@ -234,7 +362,7 @@ const PrayerRegPageMain = styled.div`
 			width: 50vw;
 		}
 	}
-	
+
 	.prayerReg__bodyFormRegister {
 		background-color: #045762;
 		color: #fff;
@@ -261,7 +389,7 @@ const PrayerRegPageMain = styled.div`
 		background-image: url(${prayerCoverImage});
 		background-repeat: no-repeat;
 		background-size: cover;
-        cursor: pointer;
+		cursor: pointer;
 		background-position: center;
 	}
 `;
