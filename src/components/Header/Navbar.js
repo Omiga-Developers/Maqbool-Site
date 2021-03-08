@@ -16,15 +16,8 @@ const Navbar = () => {
 				<Menu.Item>
 					<Link to="/donate">Donate</Link>
 				</Menu.Item>
-				<Menu.Item disabled={true}> 
-					<a
-						disabled={true}
-						rel="noreferrer"
-						href="https://maqbool-jumuah-registration.firebaseapp.com/"
-						target="_blank"
-					>
-						Prayers Registration
-					</a>
+				<Menu.Item> 
+					<Link to="/prayer-registration">Prayers Registration</Link>
 				</Menu.Item>
 			</Menu>
 		</NavbarWrapper>

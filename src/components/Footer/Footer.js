@@ -37,12 +37,18 @@ const Footer = () => {
 						</Link>
 					</p>
 					<p>
-						<a disabled={true} rel="noreferrer" href="https://maqbool-jumuah-registration.firebaseapp.com/" target="_blank">
+						<Link to="/prayer-registration" target="_top">
 							Prayers Registration
-						</a>
+						</Link>
 					</p>
 					<p>
-						<Link to="/home" target="_top">
+						<Link
+							to="/home"
+							target="_top"
+							onClick={() => {
+								window.open('https://my.matterport.com/show/?m=6AYqaWW42dE', '_blank');
+							}}
+						>
 							Virtual Tour
 						</Link>
 					</p>
