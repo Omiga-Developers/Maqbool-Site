@@ -1,11 +1,9 @@
-import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import FadeIn from 'react-fade-in';
+import styled from 'styled-components';
 
 const AboutUs = () => {
 	return (
 		<AboutUsWrapper>
-z
 			<div className="title">
 				<h2>- About Us -</h2>
 			</div>
