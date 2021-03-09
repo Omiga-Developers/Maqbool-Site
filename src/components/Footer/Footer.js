@@ -103,7 +103,17 @@ const FooterWrapper = styled.div`
 		color: white;
 	}
 
+	@media screen and (max-width: 500px) {
+		padding-top: 1rem;
+		padding-bottom: 1rem;
+
+		> div {
+			font-size: 1rem;
+		}
+	}
 	@media screen and (max-width: 700px) {
+		border-top-left-radius: 0px;
+
 		div.left {
 			display: none;
 		}
