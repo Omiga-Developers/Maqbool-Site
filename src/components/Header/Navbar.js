@@ -17,7 +17,7 @@ const Navbar = () => {
 					<Link to="/donate">Donate</Link>
 				</Menu.Item>
 				<Menu.Item>
-					<Link to="/prayer-registration" disabled>Prayers Registration</Link>
+					<Link to="/prayer-registration">Prayers Registration</Link>
 				</Menu.Item>
 			</Menu>
 		</NavbarWrapper>

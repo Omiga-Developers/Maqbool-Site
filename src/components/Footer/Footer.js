@@ -38,7 +38,7 @@ const Footer = () => {
 						</Link>
 					</p>
 					<p>
-						<Link to="/prayer-registration" target="_top" disabled>
+						<Link to="/prayer-registration" target="_top">
 							Prayers Registration
 						</Link>
 					</p>
