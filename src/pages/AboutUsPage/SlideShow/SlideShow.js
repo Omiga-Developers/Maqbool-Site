@@ -22,11 +22,18 @@ function SlideShow() {
 }
 
 const SlideShowMain = styled.div`
-    font-family: 'Poppins';
-
+	font-family: 'Poppins';
 	.slideShowImage {
 		width: 500px;
 		height: 450px;
+	}
+
+	@media screen and (max-width: 1200px) {
+		width: 450px;
+		height: 400px;
+	}
+	@media screen and (max-width: 700px) {
+		display: none;
 	}
 `;
 export default SlideShow;

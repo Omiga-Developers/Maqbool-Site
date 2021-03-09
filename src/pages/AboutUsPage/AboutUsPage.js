@@ -31,6 +31,7 @@ function AboutUsPage() {
 						voluptates odit eligendi repellen
 					</p>
 					<SlideShow />
+					<img src="https://www.swedishnomad.com/wp-content/images/2019/04/Praying-muslim.jpg" alt="" />
 				</div>
 			</Fade>
 		</AboutUsPageMain>
@@ -55,7 +56,9 @@ const AboutUsPageMain = styled.div`
 		justify-content: center;
 		color: #045762;
 	}
-
+	.aboutUs__description > img {
+		display: none;
+	}
 	.aboutUs__title {
 		background-image: url(${aboutCoverImage});
 		padding: 100px 150px;
@@ -86,7 +89,64 @@ const AboutUsPageMain = styled.div`
 	.aboutUs__description > p {
 		margin: 0 50px 0 0;
 		font-size: 18px;
+		text-align: justify;
 		color: #045762;
+	}
+	@media screen and (max-width: 1000px) {
+		.aboutUs__description > p {
+			margin: 0 0 50px 0;
+		}
+		.aboutUs__description {
+			flex-direction: column;
+			align-items: center;
+			padding: 50px;
+			margin: 0 0 50px 0;
+			justify-content: center;
+		}
+	}
+	@media screen and (max-width: 700px) {
+		.aboutUs__description > img {
+			display: flex;
+			object-fit: contain;
+			height: 250px;
+		}
+	}
+	@media screen and (max-width: 650px) {
+		.aboutUs__title > p {
+			display: flex !important;
+			flex-direction: column !important;
+			align-items: center !important;
+			justify-content: center !important;
+		}
+		.aboutUs__title > p {
+			line-height: 4rem;
+			font-size: 4rem;
+		}
+	}
+	@media screen and (max-width: 400px) {
+		.aboutUs__description {
+			padding: 25px;
+		}
+		.aboutUs__description > img {
+			height: 200px;
+		}
+	}
+	@media screen and (max-width: 350px) {
+		.aboutUs__title > p {
+			line-height: 2.5rem;
+			font-size: 2.5rem;
+		}
+		.aboutUs__description > img {
+			display: none;
+		}
+		.update__message {
+			word-wrap: wrap;
+			text-align: center;
+			font-size: 0.7rem;
+		}
+		.aboutUs__title{
+			padding: 80px 100px;
+		}
 	}
 `;
 
