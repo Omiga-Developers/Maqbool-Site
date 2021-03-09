@@ -30,6 +30,10 @@ const NavbarWrapper = styled.div`
 	font-family: 'Poppins';
 	margin-bottom: -10px;
 
+	@media screen and (max-width: 800px) {
+		display: none;
+	}
+
 	> .ant-menu {
 		justify-content: space-around;
 		display: flex;
