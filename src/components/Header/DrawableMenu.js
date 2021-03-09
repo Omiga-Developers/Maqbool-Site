@@ -60,7 +60,7 @@ function DrawableMenu() {
 					</ListItemIcon>
 					<ListItemText primary="Donate" onClick={() => history.replace('/donate')} />
 				</ListItem>
-				<ListItem button key="Prayers Registration">
+				<ListItem button key="Prayers Registration" disabled>
 					<ListItemIcon>
 						<TouchAppIcon onClick={() => history.replace('/prayer-registration')} />
 					</ListItemIcon>
