@@ -74,9 +74,6 @@ const AboutUsWrapper = styled.div`
 
 	> div.lower > div.lower__right {
 		width: 40%;
-		background-position: center;
-		background-repeat: no-repeat;
-		background-size: cover;
 	}
 	div.lower__left > p {
 		text-align: justify;
@@ -98,7 +95,7 @@ const AboutUsWrapper = styled.div`
 		> div.lower {
 			padding: 0 20px !important;
 		}
-		.update__message{
+		.update__message {
 			font-size: 10px;
 			word-wrap: wrap;
 		}
@@ -110,6 +107,11 @@ const AboutUsWrapper = styled.div`
 	@media screen and (max-width: 1000px) {
 		> div.lower {
 			flex-direction: column;
+		}
+		> div.lower > div.lower__right {
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: cover;
 		}
 
 		div.lower__left,

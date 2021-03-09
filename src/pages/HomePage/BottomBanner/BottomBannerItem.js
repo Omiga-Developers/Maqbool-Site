@@ -78,4 +78,32 @@ const BottomBannerItemWrapper = styled.div`
 		font-size: 1.4rem;
 		font-weight: 500;
 	}
+
+	@media screen and (max-width: 500px) {
+	}
+
+	@media screen and (max-width: 650px) {
+		.bannerItem__left,
+		.bannerItem__leftBottom {
+			display: flex !important;
+			align-items: center !important;
+			flex-direction: column !important;
+			justify-content: center !important;
+		}
+		.bannerItem__leftTop > h2,
+		.bannerItem__leftTop > p {
+			font-size: 3rem !important;
+		}
+		.bannerItem__leftBottom > button {
+			margin-bottom: 20px;
+		}
+	}
+	@media screen and (max-width: 1000px) {
+		.bannerItem__right {
+			display: none;
+		}
+		.bannerItem__left {
+			width: 100% !important;
+		}
+	}
 `;
