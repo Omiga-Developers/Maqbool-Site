@@ -1,9 +1,8 @@
+import { DownOutlined, FieldTimeOutlined } from '@ant-design/icons';
+import { Button, Dropdown, Menu } from 'antd';
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import Datetime from 'react-datetime';
 import TimePray from './TimePray';
-import { Menu, Dropdown, Button, message, Space, Tooltip } from 'antd';
-import { DownOutlined, FieldTimeOutlined } from '@ant-design/icons';
 
 function PrayerTimer() {
 	const [displayFajr, setDisplayFajr] = useState(false);
@@ -18,7 +17,7 @@ function PrayerTimer() {
 
 	const [prayerDetails, setPrayerDetails] = useState();
 	const PRAYER_TIME_API =
-		'http://api.aladhan.com/v1/timingsByCity?city=' + city + '&country=SriLanka&method=3&school=' + juristicValue;
+		'https://api.aladhan.com/v1/timingsByCity?city=' + city + '&country=SriLanka&method=3&school=' + juristicValue;
 
 	const LOADING_GIF_URL = 'https://i.stack.imgur.com/UUjhE.gif';
 	const MONTHS = [
