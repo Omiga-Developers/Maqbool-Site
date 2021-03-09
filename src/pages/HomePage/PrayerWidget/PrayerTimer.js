@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Datetime from 'react-datetime';
 import TimePray from './TimePray';
-import { Button, Input } from 'antd';
+import { Menu, Dropdown, Button, message, Space, Tooltip } from 'antd';
+import { DownOutlined, FieldTimeOutlined } from '@ant-design/icons';
 
 function PrayerTimer() {
 	const [displayFajr, setDisplayFajr] = useState(false);
@@ -12,11 +13,12 @@ function PrayerTimer() {
 	const [displayMaghrib, setDisplayMaghrib] = useState(false);
 	const [displayIsha, setDisplayIsha] = useState(false);
 	const [countDownValue, setCountDownValue] = useState();
-
+	const [juristicValue, setJuristicValue] = useState(1);
 	const [city, setCity] = useState('Colombo');
 
 	const [prayerDetails, setPrayerDetails] = useState();
-	const PRAYER_TIME_API = 'https://api.pray.zone/v2/times/today.json?city=' + city;
+	const PRAYER_TIME_API = 'http://api.aladhan.com/v1/timingsByCity?city=' + city + '&country=SriLanka&method=8&school='+ juristicValue;
+	
 	const LOADING_GIF_URL = 'https://i.stack.imgur.com/UUjhE.gif';
 	const MONTHS = [
 		'January',
@@ -33,15 +35,15 @@ function PrayerTimer() {
 		'December',
 	];
 
-	const handleUpdatePrayerDetais = () => {
-		// This is fetching the exchange rate API details
-		fetch(PRAYER_TIME_API)
-			.then((res) => res.json())
-			.then((data) => {
-				// we have fetched all the prayers from the api
-				setPrayerDetails(data.results.datetime[0].times);
-			});
-	};
+	// const handleUpdatePrayerDetais = () => {
+	// 	// This is fetching the exchange rate API details
+	// 	fetch(PRAYER_TIME_API)
+	// 		.then((res) => res.json())
+	// 		.then((data) => {
+	// 			// we have fetched all the prayers from the api
+	// 			setPrayerDetails(data.results.datetime[1].times);
+	// 		});
+	// };
 	// fetching all the prayer details from a REST API
 	useEffect(() => {
 		// This is fetching the exchange rate API details
@@ -49,9 +51,40 @@ function PrayerTimer() {
 			.then((res) => res.json())
 			.then((data) => {
 				// we have fetched all the prayers from the api
-				setPrayerDetails(data.results.datetime[0].times);
+				console.log(data.data.timings);
+				console.log(PRAYER_TIME_API);
+				setPrayerDetails(data.data.timings);
 			});
-	}, []);
+	}, [juristicValue]);
+
+	// Juristic Menu
+	const menu = (
+		<Menu onClick={handleMenuClick}>
+			<Menu.Item key="Hanafi" icon={<FieldTimeOutlined />}>
+				Hanafi
+			</Menu.Item>
+			<Menu.Item key="Maliki" icon={<FieldTimeOutlined />}>
+				Maliki
+			</Menu.Item>
+			<Menu.Item key="Shafi" icon={<FieldTimeOutlined />}>
+				Shafi
+			</Menu.Item>
+			<Menu.Item key="Hanbali" icon={<FieldTimeOutlined />}>
+				Hanbali
+			</Menu.Item>
+		</Menu>
+	);
+
+	// filtering the data related to the juristic menu
+	function handleMenuClick({ key }) {
+		// 1 = Hanafi
+		// 0 = Hanbali, Maliki and Shafi
+		if (key === 'Hanafi') {
+			setJuristicValue(1);
+		} else {
+			setJuristicValue(0);
+		}
+	}
 
 	useEffect(() => {
 		let FajrTimeInMins = parseInt(prayerDetails?.Fajr.split(':')[0]) * 60 + parseInt(prayerDetails?.Fajr.split(':')[1]);
@@ -118,7 +151,7 @@ function PrayerTimer() {
 			setDisplayDhuhr(false);
 			setDisplayMaghrib(false);
 			setDisplayIsha(false);
-			setCountDownValue(((24 * 60) * 60000 - currentTime * 60000) + (FajrTimeInMins * 60000));
+			setCountDownValue(24 * 60 * 60000 - currentTime * 60000 + FajrTimeInMins * 60000);
 		}
 	}, [prayerDetails]);
 	return (
@@ -129,16 +162,21 @@ function PrayerTimer() {
 					<div className="topContainer">
 						<div>
 							<h1>Prayer Times in {city}</h1>
-							<div>
-								<p>Enter City Name: </p>
-								<Input
+							<div className="juristicContainer">
+								<p>Juristic Settings</p>
+								<Dropdown overlay={menu}>
+									<Button>
+										Select <DownOutlined />
+									</Button>
+								</Dropdown>
+								{/* <Input
 									className="cityName"
 									type="text"
 									placeholder="City Name"
 									onChange={(e) => setCity(e.target.value)}
 									value={city}
 								/>
-								<Button onClick={handleUpdatePrayerDetais}>Search</Button>
+								<Button onClick={handleUpdatePrayerDetais}>Search</Button> */}
 							</div>
 						</div>
 						<h3>
@@ -196,6 +234,9 @@ const PrayerTimerContainer = styled.div`
 	padding: 20px;
 	width: 100%;
 
+	.juristicContainer > p {
+		font-size: 20px;
+	}
 	.loadingImage {
 		display: flex;
 		align-items: center;
