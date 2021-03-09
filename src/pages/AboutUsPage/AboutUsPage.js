@@ -81,7 +81,7 @@ const AboutUsPageMain = styled.div`
 	.aboutUs__description {
 		display: flex;
 		justify-content: space-evenly;
-		padding: 150px 100px;
+		padding: 120px 100px;
 	}
 	.aboutUs__description > p {
 		margin: 0 50px 0 0;

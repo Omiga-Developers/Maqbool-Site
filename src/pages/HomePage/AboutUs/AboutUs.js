@@ -38,7 +38,7 @@ export default AboutUs;
 
 const AboutUsWrapper = styled.div`
 
-	margin: 8rem 4rem;
+	margin: 5rem 4rem;
 	display: flex;
 	flex-direction: column;
 	font-family: 'Poppins';

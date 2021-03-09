@@ -23,5 +23,5 @@ export default BottomBanner;
 const BottomBannerWrapper = styled.div `
     display: relative;
     font-family: 'Poppins';
-    margin: 8rem 0rem;
+    margin: 5rem 0rem;
 `

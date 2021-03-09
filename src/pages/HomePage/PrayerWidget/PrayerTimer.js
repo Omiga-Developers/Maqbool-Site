@@ -17,7 +17,7 @@ function PrayerTimer() {
 	const [city, setCity] = useState('Colombo');
 
 	const [prayerDetails, setPrayerDetails] = useState();
-	const PRAYER_TIME_API = 'http://api.aladhan.com/v1/timingsByCity?city=' + city + '&country=SriLanka&method=8&school='+ juristicValue;
+	const PRAYER_TIME_API = 'http://api.aladhan.com/v1/timingsByCity?city=' + city + '&country=SriLanka&method=3&school='+ juristicValue;
 	
 	const LOADING_GIF_URL = 'https://i.stack.imgur.com/UUjhE.gif';
 	const MONTHS = [
@@ -161,9 +161,9 @@ function PrayerTimer() {
 					{/* Title */}
 					<div className="topContainer">
 						<div>
-							<h1>Prayer Times in {city}</h1>
+							<h1>Prayer Times</h1>
 							<div className="juristicContainer">
-								<p>Juristic Settings</p>
+								<p>Juristic Settings <small>(Hanafi by default)</small></p>
 								<Dropdown overlay={menu}>
 									<Button>
 										Select <DownOutlined />
