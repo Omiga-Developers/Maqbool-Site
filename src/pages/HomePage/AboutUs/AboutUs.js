@@ -7,7 +7,9 @@ const AboutUs = () => {
 			<div className="title">
 				<h2>- About Us -</h2>
 			</div>
-			<p className="update__message" style={{marginBottom: '20px'}}>(This will be updated soon in time In Sha Allah)</p>
+			<p className="update__message" style={{ marginBottom: '20px' }}>
+				(This will be updated soon in time In Sha Allah)
+			</p>
 
 			<div className="lower">
 				<div className="lower__left">
@@ -37,11 +39,12 @@ const AboutUs = () => {
 export default AboutUs;
 
 const AboutUsWrapper = styled.div`
-
 	margin: 5rem 4rem;
 	display: flex;
 	flex-direction: column;
 	font-family: 'Poppins';
+	@media screen and (max-width: 1000px) {
+	}
 
 	> div.title {
 		display: flex;
@@ -71,16 +74,40 @@ const AboutUsWrapper = styled.div`
 
 	> div.lower > div.lower__right {
 		width: 40%;
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: cover;
 	}
 	div.lower__left > p {
+		text-align: justify;
 		font-size: 1.1rem;
 	}
 
 	div.lower__left {
 		text-align: start;
 	}
+	@media screen and (max-width: 500px) {
+		> div.title > h2 {
+			font-size: 1.5rem;
+			margin-bottom: 10px;
+		}
+		div.lower__left > p {
+			font-size: 1rem;
+			text-align: justify;
+		}
+		> div.lower {
+			padding: 0 20px !important;
+		}
+		.update__message{
+			font-size: 10px;
+			word-wrap: wrap;
+		}
+	}
+	@media screen and (max-width: 650px) {
+		margin: 4rem 1rem;
+	}
 
-	@media screen and (max-width: 700px) {
+	@media screen and (max-width: 1000px) {
 		> div.lower {
 			flex-direction: column;
 		}
@@ -93,6 +120,9 @@ const AboutUsWrapper = styled.div`
 
 		div.lower__left > p {
 			font-size: 1rem;
+		}
+		.lower__right {
+			height: 250px;
 		}
 	}
 `;
