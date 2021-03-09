@@ -16,7 +16,7 @@ const Navbar = () => {
 				<Menu.Item>
 					<Link to="/donate">Donate</Link>
 				</Menu.Item>
-				<Menu.Item> 
+				<Menu.Item>
 					<Link to="/prayer-registration">Prayers Registration</Link>
 				</Menu.Item>
 			</Menu>
@@ -54,5 +54,13 @@ const NavbarWrapper = styled.div`
 	.ant-menu-item-active {
 		border-color: #045762 !important;
 		color: #045762 !important;
+	}
+
+	@media screen and (max-width: 500px) {
+		> .ant-menu > li > a {
+			padding: 0rem 0.4rem !important;
+			font-size: 1.2rem;
+		}
+	
 	}
 `;

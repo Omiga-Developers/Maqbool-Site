@@ -55,4 +55,24 @@ const PrayerWidgetWrapper = styled.div`
 		transform: scale(1.08);
 		transition: 0.5s ease-in-out;
 	}
+
+	@media screen and (max-width: 500px) {
+		margin: 2rem;
+
+		.prayer__title {
+			margin-bottom: 10px;
+		}
+
+		.prayer__title > h2 {
+			font-size: 1.5rem;
+			margin-bottom: 20px;
+			color: #045762;
+		}
+	}
+	@media screen and (max-width: 300px) {
+		margin: 1rem;
+		.prayer__title > h2 {
+			font-size: 1.3rem;
+		}
+	}
 `;

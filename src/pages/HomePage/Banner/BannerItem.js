@@ -17,7 +17,7 @@ const BannerItem = ({ title, paragraph, button, leftImage, leftWidth, padding })
 					<Button
 						onClick={() => {
 							if (button === 'Register') {
-                                window.location.replace('/prayer-registration');
+								window.location.replace('/prayer-registration');
 							}
 						}}
 					>
@@ -64,6 +64,15 @@ const BannerItemWrapper = styled.div`
 	div.bannerItem__leftBottom > button > span {
 		font-size: 1.4rem;
 		font-weight: 500;
+	}
+	@media screen and (max-width: 500px) {
+		div.bannerItem__leftTop > h2 {
+			font-size: 2.5rem;
+		}
+
+		div.bannerItem__leftTop > p {
+			font-size: 2.5rem;
+		}
 	}
 
 	@media screen and (max-width: 650px) {

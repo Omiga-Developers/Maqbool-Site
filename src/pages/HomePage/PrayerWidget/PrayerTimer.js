@@ -17,8 +17,9 @@ function PrayerTimer() {
 	const [city, setCity] = useState('Colombo');
 
 	const [prayerDetails, setPrayerDetails] = useState();
-	const PRAYER_TIME_API = 'http://api.aladhan.com/v1/timingsByCity?city=' + city + '&country=SriLanka&method=3&school='+ juristicValue;
-	
+	const PRAYER_TIME_API =
+		'http://api.aladhan.com/v1/timingsByCity?city=' + city + '&country=SriLanka&method=3&school=' + juristicValue;
+
 	const LOADING_GIF_URL = 'https://i.stack.imgur.com/UUjhE.gif';
 	const MONTHS = [
 		'January',
@@ -160,10 +161,12 @@ function PrayerTimer() {
 				<div>
 					{/* Title */}
 					<div className="topContainer">
-						<div>
+						<div className="topContainerLeft">
 							<h1>Prayer Times</h1>
 							<div className="juristicContainer">
-								<p>Juristic Settings <small>(Hanafi by default)</small></p>
+								<p>
+									Juristic Settings <small>(Hanafi by default)</small>
+								</p>
 								<Dropdown overlay={menu}>
 									<Button>
 										Select <DownOutlined />
@@ -260,6 +263,29 @@ const PrayerTimerContainer = styled.div`
 		justify-content: space-evenly !important;
 
 		margin-top: 50px;
+	}
+
+	@media screen and (max-width: 500px) {
+		.topContainerLeft > h1 {
+			font-size: 1.3rem;
+		}
+		.juristicContainer > p {
+			font-size: 1rem;
+		}
+		.topContainer > h3 {
+			display: none;
+		}
+		.prayerList {
+			margin-top: 30px;
+		}
+	}
+	@media screen and (max-width: 300px) {
+		.topContainerLeft > h1 {
+			font-size: 1rem;
+		}
+		.juristicContainer > p {
+			font-size: 0.8rem;
+		}
 	}
 `;
 export default PrayerTimer;

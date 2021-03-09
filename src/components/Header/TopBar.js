@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import Logo from './logo.svg';
 
-
 const TopBar = () => {
 	return (
 		<TopBarWrapper>
@@ -18,8 +17,14 @@ const TopBarWrapper = styled.div`
 	justify-content: center;
 	font-family: 'Poppins';
 
-	>  img {
+	> img {
 		width: 15rem;
 		object-fit: contain;
+	}
+
+	@media screen and (max-width: 500px) {
+		> img {
+			width: 10rem;
+		}
 	}
 `;
