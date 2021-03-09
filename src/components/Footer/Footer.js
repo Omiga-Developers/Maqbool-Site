@@ -120,7 +120,7 @@ const FooterWrapper = styled.div`
 
 		div.center {
 			border: none;
-			justify-content: space-between;
+			justify-content: flex-start;
 		}
 	}
 `;

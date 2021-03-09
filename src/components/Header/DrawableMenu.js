@@ -90,17 +90,18 @@ const MainTopBar = styled.div`
 	display: none;
 
 	@media screen and (max-width: 800px) {
-		
-        .MuiListItemText-root > span{
+        /* border: 1px red solid; */
+        margin-bottom: -20px;
+		.MuiListItemText-root > span {
 			font-family: 'Poppins' !important;
-        }
+		}
 		display: flex;
 		align-items: center;
 		padding: 10px 5px;
 		justify-content: space-between;
 		.drawable__menu {
-			padding: 0px;
-			margin: 0px;
+			/* padding: 0px; */
+			/* margin: 0px; */
 		}
 		.header__logo {
 			object-fit: contain;
