@@ -328,10 +328,12 @@ const PrayerRegPageMain = styled.div`
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
+		flex-wrap: wrap;
 	}
 	.prayerReg__bodyJamaathContainer > div {
 		border: 1px green solid;
 		padding: 50px 30px;
+		margin: 20px 0;
 		flex-direction: column;
 		background-color: #045762;
 		color: white;
@@ -391,6 +393,54 @@ const PrayerRegPageMain = styled.div`
 		background-size: cover;
 		cursor: pointer;
 		background-position: center;
+	}
+
+	@media screen and (max-width: 1000px) {
+		.prayerReg__bodyDescription > p {
+			text-align: justify;
+		}
+		.prayerReg__bodyJamaathContainer {
+			justify-content: space-evenly;
+		}
+	}
+	@media screen and (max-width: 700px) {
+		.prayerReg__body {
+			margin: 80px 50px;
+		}
+	}
+	@media screen and (max-width: 650px) {
+		.prayerReg__title > p {
+			display: flex !important;
+			flex-direction: column !important;
+			align-items: center !important;
+			justify-content: center !important;
+			line-height: 4rem;
+			font-size: 4rem;
+		}
+	}
+	@media screen and (max-width: 400px) {
+		.prayerReg__bodyFormSection {
+			margin: 60px 0;
+		}
+		.prayerReg__bodyJamaathContainer > div {
+			padding: 30px 20px;
+		}
+		.prayerReg__title > p {
+			line-height: 3rem;
+			font-size: 3rem;
+		}
+		.prayerReg__body {
+			margin: 50px 25px;
+		}
+	}
+	@media screen and (max-width: 350px) {
+		.prayerReg__title > p {
+			line-height: 2.5rem;
+			font-size: 2.5rem;
+		}
+		.prayerReg__title {
+			padding: 80px 100px;
+		}
 	}
 `;
 export default PrayerRegPage;
