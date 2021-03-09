@@ -96,5 +96,42 @@ const DonatePageMain = styled.div`
 		border: 1px darkgreen solid;
 		transition: 0.2s ease-in-out;
 	}
+
+	@media screen and (max-width: 650px) {
+		.donate__title > p {
+			display: flex !important;
+			flex-direction: column !important;
+			align-items: center !important;
+			justify-content: center !important;
+			line-height: 4rem;
+			font-size: 4rem;
+		}
+	}
+	@media screen and (max-width: 1000px) {
+		.donate__body > h1 {
+			font-size: 2.5rem;
+			width: 100%;
+			margin: 80px;
+			/* border: 1px red solid; */
+			text-align: center;
+		}
+	}
+	@media screen and (max-width: 350px) {
+		.donate__title > p {
+			line-height: 2.5rem;
+			font-size: 2.5rem;
+		}
+
+		.donate__title {
+			padding: 100px;
+		}
+		.donate__body > h1 {
+			font-size: 2rem;
+			width: 100%;
+			margin: 80px;
+			/* border: 1px red solid; */
+			text-align: center;
+		}
+	}
 `;
 export default DonatePage;

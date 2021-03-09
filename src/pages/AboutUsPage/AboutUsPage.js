@@ -117,8 +117,6 @@ const AboutUsPageMain = styled.div`
 			flex-direction: column !important;
 			align-items: center !important;
 			justify-content: center !important;
-		}
-		.aboutUs__title > p {
 			line-height: 4rem;
 			font-size: 4rem;
 		}
@@ -144,7 +142,7 @@ const AboutUsPageMain = styled.div`
 			text-align: center;
 			font-size: 0.7rem;
 		}
-		.aboutUs__title{
+		.aboutUs__title {
 			padding: 80px 100px;
 		}
 	}
