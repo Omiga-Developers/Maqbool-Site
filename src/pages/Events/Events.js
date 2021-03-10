@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
-import ReactPlayer from 'react-player';
 import { Fade } from 'react-awesome-reveal';
+import ReactPlayer from 'react-player';
+import styled from 'styled-components';
 
 function Events() {
 	const LOADING_GIF_URL = 'https://i.stack.imgur.com/UUjhE.gif';

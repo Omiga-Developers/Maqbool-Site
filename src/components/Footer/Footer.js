@@ -8,7 +8,7 @@ const Footer = () => {
 		<FooterWrapper>
 			<div className="left">
 				<img src={Logo} alt="Logo" />
-				<small style={{ opacity: 0.1 }}>Omiga</small>
+				{/* <small style={{ opacity: 0.1 }}>Omiga</small> */}
 			</div>
 			<div className="center">
 				<div className="address">
