@@ -7,6 +7,7 @@ import PrayerRegPage from './pages/PrayerRegPage/PrayerRegPage';
 import DonatePage from './pages/DonatePage/DonatePage';
 import AboutUsPage from './pages/AboutUsPage/AboutUsPage';
 import HomePage from './pages/HomePage/HomePage';
+import Events from './pages/Events/Events';
 
 function App() {
 	return (
@@ -23,6 +24,9 @@ function App() {
 					</Route>
 					<Route path="/about-us">
 						<AboutUsPage />
+					</Route>
+					<Route path="/events">
+						<Events />
 					</Route>
 					<Route path="/home">
 						<HomePage />

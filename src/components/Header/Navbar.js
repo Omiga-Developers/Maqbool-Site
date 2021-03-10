@@ -14,6 +14,9 @@ const Navbar = () => {
 					<Link to="/about-us">About Us</Link>
 				</Menu.Item>
 				<Menu.Item>
+					<Link to="/events">Events</Link>
+				</Menu.Item>
+				<Menu.Item>
 					<Link to="/donate">Donate</Link>
 				</Menu.Item>
 				<Menu.Item>
@@ -30,7 +33,7 @@ const NavbarWrapper = styled.div`
 	font-family: 'Poppins';
 	margin-bottom: -10px;
 
-	@media screen and (max-width: 800px) {
+	@media screen and (max-width: 950px) {
 		display: none;
 	}
 

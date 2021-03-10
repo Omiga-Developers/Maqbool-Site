@@ -9,6 +9,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import styled from 'styled-components';
+import LiveTvIcon from '@material-ui/icons/LiveTv';
 
 const useStyles = makeStyles({
 	list: {
@@ -54,6 +55,12 @@ function DrawableMenu() {
 					</ListItemIcon>
 					<ListItemText primary="About us" onClick={() => history.replace('/about-us')} />
 				</ListItem>
+				<ListItem button key="Events">
+					<ListItemIcon>
+						<LiveTvIcon onClick={() => history.replace('/events')} />
+					</ListItemIcon>
+					<ListItemText primary="Events" onClick={() => history.replace('/events')} />
+				</ListItem>
 				<ListItem button key="Donate">
 					<ListItemIcon>
 						<GroupIcon onClick={() => history.replace('/donate')} />
@@ -89,7 +96,7 @@ export default DrawableMenu;
 const MainTopBar = styled.div`
 	display: none;
 
-	@media screen and (max-width: 800px) {
+	@media screen and (max-width: 950px) {
         /* border: 1px red solid; */
         margin-bottom: -20px;
 		.MuiListItemText-root > span {

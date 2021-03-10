@@ -19,9 +19,11 @@
     "react-datetime": "^3.0.4",
     "react-dom": "^17.0.1",
     "react-fade-in": "^2.0.1",
+    "react-player": "^2.9.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "react-slideshow-image": "^3.4.3",
+    "react-spinners": "^0.10.6",
     "react-toastify": "^7.0.3",
     "styled-components": "^5.2.1",
     "web-vitals": "^1.0.1"
