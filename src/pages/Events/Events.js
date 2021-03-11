@@ -17,7 +17,7 @@ function Events() {
 	const LOADING_GIF_URL = 'https://i.stack.imgur.com/UUjhE.gif';
 	const [loading, setLoading] = useState(true);
 	const STREAMING_URL =
-		'https://www.facebook.com/plugins/video.php?height=314&href=htasctps%3A%2F%2Fwww.facebook.com%2FRogstream%2Fvideos%2F726106508084877%2F&show_text=false';
+		'https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2FHafizEhsanQadiri%2Fvideos%2F271597151000954%2F';
 
 	useEffect(() => {
 		setTimeout(() => {
@@ -70,18 +70,16 @@ function Events() {
 						// 	height="100%"
 						// 	url={STREAMING_URL}
 						// />
-						<div>
-							<p>ajsdbv</p>
-						</div>
-						// <iframe
-						// 	title="title"
-						// 	src={STREAMING_URL}
-						// 	className="facebook__live"
-						// 	frameborder="0"
-						// 	gesture="media"
-						// 	allow="autoplay; encrypted-media"
-						// 	allowfullscreen
-						// ></iframe>
+					
+						<iframe
+							title="title"
+							src={STREAMING_URL}
+							className="facebook__live"
+							frameborder="0"
+							gesture="media"
+							allow="autoplay; encrypted-media"
+							allowfullscreen
+						></iframe>
 					)}
 				</div>
 				<div className="commentSection">
@@ -152,10 +150,10 @@ const EventsMainContainer = styled.div`
 	}
 
 	.commentSection {
-		/* border-top: 1px #045762 solid; */
+		border-top: 1px #045762 solid;
 		border-radius: px;
-		height: 300px;
-		margin: 30px 50px;
+		height: 100%;
+		margin: 10px 50px;
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
@@ -184,8 +182,8 @@ const EventsMainContainer = styled.div`
 	}
 	.streamingVideo {
 		margin: 30px 50px;
-		background-color: #eee; // REMOVE THIS
-		border: 1px lightgreen solid; // REMOVE THIS
+		/* background-color: #eee; // REMOVE THIS */
+		/* border: 1px lightgreen solid; // REMOVE THIS */
 		display: flex;
 		/* height: 600px; */
 		align-items: center;
