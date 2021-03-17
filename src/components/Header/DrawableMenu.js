@@ -55,12 +55,12 @@ function DrawableMenu() {
 					</ListItemIcon>
 					<ListItemText primary="About us" onClick={() => history.replace('/about-us')} />
 				</ListItem>
-				<ListItem button key="Events">
+				{/* <ListItem button key="Events">
 					<ListItemIcon>
 						<LiveTvIcon onClick={() => history.replace('/events')} />
 					</ListItemIcon>
 					<ListItemText primary="Events" onClick={() => history.replace('/events')} />
-				</ListItem>
+				</ListItem> */}
 				<ListItem button key="Donate">
 					<ListItemIcon>
 						<GroupIcon onClick={() => history.replace('/donate')} />

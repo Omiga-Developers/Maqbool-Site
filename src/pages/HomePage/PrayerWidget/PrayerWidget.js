@@ -22,7 +22,7 @@ const PrayerWidget = () => {
 export default PrayerWidget;
 
 const PrayerWidgetWrapper = styled.div`
-	margin: 5rem 4rem;
+	margin: 4rem 4rem;
 	display: flex;
 	flex-direction: column;
 	font-family: 'Poppins';

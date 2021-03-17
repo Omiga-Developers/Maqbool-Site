@@ -13,9 +13,9 @@ const Navbar = () => {
 				<Menu.Item>
 					<Link to="/about-us">About Us</Link>
 				</Menu.Item>
-				<Menu.Item>
+				{/* <Menu.Item>
 					<Link to="/events">Events</Link>
-				</Menu.Item>
+				</Menu.Item> */}
 				<Menu.Item>
 					<Link to="/donate">Donate</Link>
 				</Menu.Item>
