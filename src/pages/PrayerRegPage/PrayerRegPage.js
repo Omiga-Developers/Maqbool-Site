@@ -1,13 +1,15 @@
+import { DownOutlined } from '@ant-design/icons';
 import { Button, Dropdown, Form, Input, Menu } from 'antd';
 import Modal from 'antd/lib/modal/Modal';
 import React, { useEffect, useState } from 'react';
-import { DownOutlined } from '@ant-design/icons';
+import { useHistory } from 'react-router';
 import styled from 'styled-components';
-import prayerCoverImage from './image.jpg';
 import db from '../../firebase';
+import prayerCoverImage from './image.jpg';
 
 function PrayerRegPage() {
 	const [showModal, setShowModal] = useState(false);
+	const history = useHistory();
 
 	//will hold the total counts
 	const [jammaathOneCount, setJamaathOneCount] = useState(0);
@@ -117,6 +119,10 @@ function PrayerRegPage() {
 		setEmail('');
 		setMobileNumber();
 		setFullName('');
+
+		// Displaying the welcome page
+		history.replace("/welcome");
+
 	};
 
 	return (

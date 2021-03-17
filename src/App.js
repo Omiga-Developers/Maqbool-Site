@@ -8,6 +8,7 @@ import DonatePage from './pages/DonatePage/DonatePage';
 import AboutUsPage from './pages/AboutUsPage/AboutUsPage';
 import HomePage from './pages/HomePage/HomePage';
 import Events from './pages/Events/Events';
+import InfoPage from './pages/InfoPage/InfoPage';
 
 function App() {
 	return (
@@ -24,6 +25,9 @@ function App() {
 					</Route>
 					<Route path="/about-us">
 						<AboutUsPage />
+					</Route>
+					<Route path="/welcome">
+						<InfoPage />
 					</Route>
 					<Route path="/events">
 						<Events />

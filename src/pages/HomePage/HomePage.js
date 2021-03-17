@@ -14,13 +14,13 @@ function HomePage() {
 				<Banner />
 			</Fade>
 			{/* <p className="update__message">(This will be updated soon in time In Sha Allah)</p> */}
-			<div className="eventSection">
+			<Fade cascade direction="bottom-right" triggerOnce className="eventSection">
 				<button disabled htmlType="submit" className="eventButton">
-					<Link to="/events">
+					<Link to="/events" target="_top">
 						Events
 					</Link>
 				</button>
-			</div>
+			</Fade>
 
 			<PrayerWidget />
 
