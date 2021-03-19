@@ -1,9 +1,40 @@
 import { Menu } from 'antd';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Navbar = () => {
+	const [registrationDisable, setRegistrationDisable] = useState(false);
+
+	// Registration
+	// enabled - Wednesday 9:55 AM
+	// disabled - Thursday 12 PM
+
+	// Wednesday (3)
+	// Thursday (4)
+
+	useEffect(() => {
+		let date = new Date();
+		let enableTargetTime = 9 * 60 + 55;
+		let disableTargetTime = 12 * 60;
+		let currentTime = date.getHours() * 60 + date.getMinutes();
+
+
+		if (date.getDay() === 3) {
+			if (currentTime >= enableTargetTime) {
+				setRegistrationDisable(false);
+			}
+		} else if (date.getDay() === 4) {
+			if (currentTime >= disableTargetTime) {
+				setRegistrationDisable(true);
+			}
+		} else {
+			setRegistrationDisable(true);
+		}
+
+
+	}, []);
+
 	return (
 		<NavbarWrapper>
 			<Menu mode="horizontal">
@@ -19,7 +50,7 @@ const Navbar = () => {
 				<Menu.Item>
 					<Link to="/donate">Donate</Link>
 				</Menu.Item>
-				<Menu.Item>
+				<Menu.Item disabled={registrationDisable}> 
 					<Link to="/prayer-registration">Prayers Registration</Link>
 				</Menu.Item>
 			</Menu>
@@ -68,6 +99,5 @@ const NavbarWrapper = styled.div`
 			padding: 0rem 0.4rem !important;
 			font-size: 1.2rem;
 		}
-	
 	}
 `;

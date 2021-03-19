@@ -6,7 +6,7 @@ import GroupIcon from '@material-ui/icons/Group';
 import TouchAppIcon from '@material-ui/icons/TouchApp';
 import clsx from 'clsx';
 import MenuIcon from '@material-ui/icons/Menu';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import LiveTvIcon from '@material-ui/icons/LiveTv';
@@ -26,6 +26,28 @@ function DrawableMenu() {
 	const [state, setState] = React.useState({
 		left: false,
 	});
+	const [registrationDisable, setRegistrationDisable] = useState(false);
+
+	useEffect(() => {
+		let date = new Date();
+		let enableTargetTime = 9 * 60 + 55;
+		let disableTargetTime = 12 * 60;
+		let currentTime = date.getHours() * 60 + date.getMinutes();
+
+
+		if (date.getDay() === 3) {
+			if (currentTime >= enableTargetTime) {
+				setRegistrationDisable(false);
+			}
+		} else if (date.getDay() === 4) {
+			if (currentTime >= disableTargetTime) {
+				setRegistrationDisable(true);
+			}
+		} else {
+			setRegistrationDisable(true);
+		}
+
+	}, []);
 
 	const toggleDrawer = (anchor, open) => (event) => {
 		if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
@@ -67,7 +89,7 @@ function DrawableMenu() {
 					</ListItemIcon>
 					<ListItemText primary="Donate" onClick={() => history.replace('/donate')} />
 				</ListItem>
-				<ListItem button key="Prayers Registration">
+				<ListItem button key="Prayers Registration" disabled={registrationDisable}>
 					<ListItemIcon>
 						<TouchAppIcon onClick={() => history.replace('/prayer-registration')} />
 					</ListItemIcon>
@@ -97,8 +119,8 @@ const MainTopBar = styled.div`
 	display: none;
 
 	@media screen and (max-width: 950px) {
-        /* border: 1px red solid; */
-        margin-bottom: -20px;
+		/* border: 1px red solid; */
+		margin-bottom: -20px;
 		.MuiListItemText-root > span {
 			font-family: 'Poppins' !important;
 		}

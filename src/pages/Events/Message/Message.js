@@ -20,7 +20,9 @@ const MessageMainContainer = styled.div`
 		padding: 5px 10px;
 		word-wrap: wrap;
 		margin: 8px 10px;
-		border-radius: 15px;
+		border-top-left-radius:15px;
+		border-top-right-radius:15px;
+		border-bottom-right-radius:15px;
 		background-color: #045762;
 		color: white;
 	}

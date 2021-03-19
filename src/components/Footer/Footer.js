@@ -1,9 +1,32 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Logo from './logo.svg';
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
+	const [registrationDisable, setRegistrationDisable] = useState(false);
+
+	useEffect(() => {
+		let date = new Date();
+		let enableTargetTime = 9 * 60 + 55;
+		let disableTargetTime = 12 * 60;
+		let currentTime = date.getHours() * 60 + date.getMinutes();
+
+		// enable
+		if (date.getDay() === 3) {
+			if (currentTime >= enableTargetTime) {
+				setRegistrationDisable(false);
+			}
+		} else if (date.getDay() === 4) {
+			if (currentTime >= disableTargetTime) {
+				setRegistrationDisable(true);
+			}
+		} else {
+			setRegistrationDisable(true);
+		}
+
+	}, []);
+
 	return (
 		<FooterWrapper>
 			<div className="left">
@@ -38,7 +61,7 @@ const Footer = () => {
 						</Link>
 					</p>
 					<p>
-						<Link to="/prayer-registration" target="_top">
+						<Link to="/prayer-registration" target="_top" disabled = {registrationDisable}>
 							Prayers Registration
 						</Link>
 					</p>

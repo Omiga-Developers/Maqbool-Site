@@ -1,8 +1,10 @@
 import { Button } from 'antd';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-const BannerItem = ({ title, paragraph, button, leftImage, leftWidth, padding }) => {
+const BannerItem = ({ title, paragraph, button, leftImage, leftWidth, padding, disable }) => {
+	
+
 	return (
 		<BannerItemWrapper>
 			<div
@@ -20,6 +22,7 @@ const BannerItem = ({ title, paragraph, button, leftImage, leftWidth, padding })
 								window.location.replace('/prayer-registration');
 							}
 						}}
+						disabled={disable}
 					>
 						{button}
 					</Button>
