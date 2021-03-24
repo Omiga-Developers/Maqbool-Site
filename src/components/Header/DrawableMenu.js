@@ -26,7 +26,7 @@ function DrawableMenu() {
 	const [state, setState] = React.useState({
 		left: false,
 	});
-	const [registrationDisable, setRegistrationDisable] = useState(false);
+	const [registrationDisable, setRegistrationDisable] = useState(true);
 
 	useEffect(() => {
 		let date = new Date();
@@ -42,6 +42,8 @@ function DrawableMenu() {
 		} else if (date.getDay() === 4) {
 			if (currentTime >= disableTargetTime) {
 				setRegistrationDisable(true);
+			}else{
+				setRegistrationDisable(false);
 			}
 		} else {
 			setRegistrationDisable(true);

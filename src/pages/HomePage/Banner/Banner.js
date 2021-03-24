@@ -4,13 +4,17 @@ import BannerItem from './BannerItem';
 import { Carousel } from 'antd';
 
 const Banner = () => {
-	const [registrationDisable, setRegistrationDisable] = useState(false);
+	const [registrationDisable, setRegistrationDisable] = useState(true);
 
 	useEffect(() => {
 		let date = new Date();
 		let enableTargetTime = 9 * 60 + 55;
 		let disableTargetTime = 12 * 60;
 		let currentTime = date.getHours() * 60 + date.getMinutes();
+
+		console.log(date.getDay());
+		console.log(currentTime);
+		console.log(enableTargetTime);
 
 		// enable
 		if (date.getDay() === 3) {
@@ -20,6 +24,8 @@ const Banner = () => {
 		} else if (date.getDay() === 4) {
 			if (currentTime >= disableTargetTime) {
 				setRegistrationDisable(true);
+			} else {
+				setRegistrationDisable(false);
 			}
 		} else {
 			setRegistrationDisable(true);

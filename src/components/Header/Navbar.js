@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Navbar = () => {
-	const [registrationDisable, setRegistrationDisable] = useState(false);
+	const [registrationDisable, setRegistrationDisable] = useState(true);
 
 	// Registration
 	// enabled - Wednesday 9:55 AM
@@ -27,6 +27,8 @@ const Navbar = () => {
 		} else if (date.getDay() === 4) {
 			if (currentTime >= disableTargetTime) {
 				setRegistrationDisable(true);
+			}else{
+				setRegistrationDisable(false);
 			}
 		} else {
 			setRegistrationDisable(true);
