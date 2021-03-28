@@ -26,31 +26,31 @@ function Events() {
 	}, []);
 
 	// get the data of a particular room / channel using firebase
-	useEffect(() => {
-		db.collection('comments')
-			.orderBy('timestamp', 'asc')
-			.onSnapshot((snapshot) => {
-				setMessages(snapshot.docs.map((doc) => doc.data()));
-			});
+	// useEffect(() => {
+	// 	db.collection('comments')
+	// 		.orderBy('timestamp', 'asc')
+	// 		.onSnapshot((snapshot) => {
+	// 			setMessages(snapshot.docs.map((doc) => doc.data()));
+	// 		});
 
-		if (messageEl) {
-			messageEl.current.addEventListener('DOMNodeInserted', (event) => {
-				const { currentTarget: target } = event;
-				target.scroll({ top: target.scrollHeight, behavior: 'smooth' });
-			});
-		}
-	}, []);
+	// 	if (messageEl) {
+	// 		messageEl.current.addEventListener('DOMNodeInserted', (event) => {
+	// 			const { currentTarget: target } = event;
+	// 			target.scroll({ top: target.scrollHeight, behavior: 'smooth' });
+	// 		});
+	// 	}
+	// }, []);
 
-	const sendMessage = (e) => {
-		e.preventDefault();
+	// const sendMessage = (e) => {
+	// 	e.preventDefault();
 
-		db.collection('comments').add({
-			message: inputMessage,
-			timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-		});
+	// 	db.collection('comments').add({
+	// 		message: inputMessage,
+	// 		timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+	// 	});
 
-		setInputMessage('');
-	};
+	// 	setInputMessage('');
+	// };
 
 	return (
 		<EventsMainContainer>
@@ -82,7 +82,7 @@ function Events() {
 						></iframe>
 					)}
 				</div>
-				<div className="commentSection">
+				{/* <div className="commentSection">
 					<div className="chat__message" id="chat__message" ref={messageEl}>
 						<FlipMove>
 							{messages?.map(({ id, message }) => (
@@ -103,7 +103,7 @@ function Events() {
 							</IconButton>
 						</form>
 					</div>
-				</div>
+				</div> */}
 			</Fade>
 		</EventsMainContainer>
 	);

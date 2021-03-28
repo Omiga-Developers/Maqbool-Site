@@ -22,6 +22,6 @@ const auth = firebase.auth();
 // using google authentication for Login Access
 const provider = new firebase.auth.GoogleAuthProvider();
 
-export { auth, provider };          // import { auth, provider } from './firebase
+export { auth, provider };
 
-export default db;    
+export default db;
