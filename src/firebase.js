@@ -1,13 +1,13 @@
 import firebase from 'firebase';
 
 const firebaseConfig = {
-	apiKey: 'AIzaSyDWtjoIL3RjXi9id0RYwx11J3nZKSWDBDU',
-	authDomain: 'maqbool-jumuah-registration.firebaseapp.com',
-	projectId: 'maqbool-jumuah-registration',
-	storageBucket: 'maqbool-jumuah-registration.appspot.com',
-	messagingSenderId: '78115862260',
-	appId: '1:78115862260:web:aee36b7384075e1ec410a1',
-	measurementId: 'G-0LHZYP4YV1',
+	apiKey: "AIzaSyC5DZPHZRL6dTqkwgAZy244TPUjFiLsOPI",
+  authDomain: "maqbool-jummah-registration.firebaseapp.com",
+  projectId: "maqbool-jummah-registration",
+  storageBucket: "maqbool-jummah-registration.appspot.com",
+  messagingSenderId: "613171458509",
+  appId: "1:613171458509:web:880895cab21db4bff49484",
+  measurementId: "G-D4HLR9HND5",
 };
 
 // initializing the app

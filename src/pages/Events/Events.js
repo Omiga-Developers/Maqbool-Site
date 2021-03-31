@@ -17,7 +17,8 @@ function Events() {
 	const LOADING_GIF_URL = 'https://i.stack.imgur.com/UUjhE.gif';
 	const [loading, setLoading] = useState(true);
 	const STREAMING_URL =
-		'https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2FHafizEhsanQadiri%2Fvideos%2F271597151000954%2F';
+		'https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2FHafizEhsanQadiri%2Fvideos%2F282026113442569%2F';
+
 
 	useEffect(() => {
 		setTimeout(() => {
