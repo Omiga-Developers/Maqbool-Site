@@ -275,7 +275,7 @@ function PrayerRegPage() {
 						</div>
 
 						<div className="contactUs__formBtn">
-							{(jammaathOneCount >= 3 && jammaathTwoCount >= 3 && jammaathThreeCount >= 3) ||
+							{(jammaathOneCount >= 50 && jammaathTwoCount >= 50 && jammaathThreeCount >= 50) ||
 							!activeChoice ||
 							!nicPassport ||
 							!email ||
