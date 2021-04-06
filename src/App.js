@@ -41,11 +41,11 @@ function App() {
 			<Header />
 			<div className="app">
 				<Switch>
-					{!registrationDisable && (
-						<Route path="/prayer-registration">
-							<PrayerRegPage />
-						</Route>
-					)}
+					{/* {!registrationDisable && ( */}
+					<Route path="/prayer-registration">
+						<PrayerRegPage />
+					</Route>
+					{/* )} */}
 
 					<Route path="/donate">
 						<DonatePage />

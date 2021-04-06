@@ -9,6 +9,7 @@ import prayerCoverImage from './image.jpg';
 
 function PrayerRegPage() {
 	const [showModal, setShowModal] = useState(false);
+	const [submitted, setSubmitted] = useState(false)
 	const history = useHistory();
 
 	//will hold the total counts
@@ -27,6 +28,7 @@ function PrayerRegPage() {
 	const [email, setEmail] = useState('');
 	const [mobileNumber, setMobileNumber] = useState('');
 	const [fullName, setFullName] = useState('');
+	const [dateTime, setDateTime] = useState('');
 	const [form] = Form.useForm();
 
 	const EMAIL_REGEX = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -35,7 +37,7 @@ function PrayerRegPage() {
 
 	useEffect(() => {
 		//refetch counts
-		db.collection('Jamaath Counts');
+		// db.collection('Jamaath Counts');
 		db.collection('Jamaath Counts')?.onSnapshot((snapshot) => {
 			if (snapshot.docs.length > 0) {
 				setJamaathOneCount(snapshot.docs[0]?.data()['Jamaath 1']);
@@ -68,18 +70,21 @@ function PrayerRegPage() {
 
 	const jamaathOptions = () => (
 		<Menu style={{ width: '250px' }}>
+			{/* limit: 50 */}
 			{(jammaathOneCount < 50 || jammaathOneCount === undefined) && (
 				<Menu.Item key="0">
 					<a onClick={handleJamaathOneChange}>Jamaath 1</a>
 				</Menu.Item>
 			)}
 			<Menu.Divider />
+			{/* limit: 50 */}
 			{(jammaathTwoCount < 50 || jammaathOneCount === undefined) && (
 				<Menu.Item key="1">
 					<a onClick={handleJamaathTwoChange}>Jamaath 2</a>
 				</Menu.Item>
 			)}
 			<Menu.Divider />
+			{/* limit: 50 */}
 			{(jammaathThreeCount < 50 || jammaathOneCount === undefined) && (
 				<Menu.Item key="2">
 					<a onClick={handleJamaathThreeChange}>Jamaath 3</a>
@@ -89,7 +94,8 @@ function PrayerRegPage() {
 	);
 
 	const onHandleRegister = async (e) => {
-		setShowModal(false);
+		let timeRegister = new Date().toUTCString();
+		setDateTime(timeRegister);
 
 		//firebase
 		db.collection('Registered').add({
@@ -98,31 +104,19 @@ function PrayerRegPage() {
 			fullName,
 			mobileNumber,
 			JamaathChoice: activeChoice,
-			time: new Date().toUTCString(),
+			time: timeRegister,
+			notified: false,
 		});
 
 		//jamaath counts stored in firebase
 		//delete all records and reupdate values
 		db.collection('Jamaath Counts')
-			.get()
-			.then((res) => res.forEach((element) => element.ref.delete()));
-
-		db.collection('Jamaath Counts').add({
-			'Jamaath 1': jammaathOneCount + currentJammaathOne,
-			'Jamaath 2': jammaathTwoCount + currentJammaathTwo,
-			'Jamaath 3': jammaathThreeCount + currentJammaathThree,
-		});
-
-		form.resetFields();
-		setActiveChoice('');
-		setNicPassport('');
-		setEmail('');
-		setMobileNumber();
-		setFullName('');
-
-		// Displaying the welcome page
-		history.replace("/welcome");
-
+			.doc('counts')
+			.update({
+				'Jamaath 1': jammaathOneCount + currentJammaathOne,
+				'Jamaath 2': jammaathTwoCount + currentJammaathTwo,
+				'Jamaath 3': jammaathThreeCount + currentJammaathThree,
+			});
 	};
 
 	return (
@@ -136,15 +130,50 @@ function PrayerRegPage() {
 				<div className="prayerReg__bodyDescription">
 					<h2>Maqbool Jumuah Registration</h2>
 					<p>Terms and Conditions</p>
+
 					<p>
-						Please note that registration is compulsory to enter the Masjid Children below the age of 15 will not be
-						allowed to enter. Your own prayer mat and mask is compulsory. If you registered and didn't receive a token
-						number via SMS means you have not been selected due to the slots being full. A valid ID Number is required
-						(If invalid, your registration will be revoked) You will have to show the SMS with the confirmed details you
-						receive at the entry checkpoint. Double entries will be cancelled as its only 1 token per person. Please
-						double check the details you submit as if it is invalid then you will not receive the token even though you
-						have been selected. Please do not submit your application twice; if you did, your entire registration would
-						be revoked.
+						{' '}
+						&#8226; Registration does not guarantee a spot for prayers, If you have registered and dont recieve a token
+						via SMS means that you have not been selected.{' '}
+					</p>
+					<p>
+						{' '}
+						&#8226; Its compulsory to bring your own prayer mats and mask, Failure to do so will result in giving your
+						spot to another person.{' '}
+					</p>
+					<p>
+						{' '}
+						&#8226; Please keep a screenshot of your application before submitting to report any errors from our end. We
+						will need proof for any complaints submitted.{' '}
+					</p>
+					<p>
+						{' '}
+						&#8226; Please do not contact any staff members via Call or whatsapp to their personal numbers. We will only
+						accept complaints through the complaints form on the website.{' '}
+					</p>
+					<p> &#8226; Children below the age of 15 will not be allowed to enter </p>
+					<p>
+						{' '}
+						&#8226; A Valid ID number and phone number is required for each application, If incorrect, your application
+						will be revoked.{' '}
+					</p>
+					<p> &#8226; Each individual should submit with their own NIC/PASSPORT number and mobile number </p>
+					<p>
+						{' '}
+						&#8226; Please only register once and be patient for the token, Multiple registrations would lead to the
+						entire registration to be revoked.{' '}
+					</p>
+					<p> &#8226; Please make sure to register yourself first before registering others. </p>
+					<p> &#8226; You have to accept the Terms & Conditions above to proceed with the registration </p>
+					<p>
+						{' '}
+						&#8226; Please note that the system selects on first come first serve basis only. IT IS NOT AN ACT OF
+						FAVORATION OR SELECTING CLOSE FRIENDS FIRST.{' '}
+					</p>
+					<p>
+						{' '}
+						&#8226; Any calls made to the team handling the registration will not be answered and complaints are
+						strictly to be typed on the complaints form. Please do not be rude to the team.{' '}
 					</p>
 				</div>
 				<div className="prayerReg__bodyForm">
@@ -152,7 +181,7 @@ function PrayerRegPage() {
 						className="prayerReg__bodyFormSection"
 						name="basic"
 						initialValues={{ remember: true }}
-						onFinish={() => setShowModal(true)}
+						// onFinish={() => setShowModal(true)}
 						requiredMark={false}
 						colon={false}
 						form={form}
@@ -246,7 +275,7 @@ function PrayerRegPage() {
 						</div>
 
 						<div className="contactUs__formBtn">
-							{(jammaathOneCount === 50 && jammaathTwoCount === 50 && jammaathThreeCount === 50) ||
+							{(jammaathOneCount >= 3 && jammaathTwoCount >= 3 && jammaathThreeCount >= 3) ||
 							!activeChoice ||
 							!nicPassport ||
 							!email ||
@@ -256,7 +285,19 @@ function PrayerRegPage() {
 									Confirm Jamaath
 								</button>
 							) : (
-								<button htmlType="submit" className="prayerReg__bodyFormRegister">
+								<button
+									htmlType="submit"
+									disabled={submitted}
+									onClick={() => {
+										setSubmitted(true);
+										setTimeout(() => {
+											onHandleRegister();
+											setShowModal(true);
+											setSubmitted(false);
+										}, Math.random() * 1500 + Math.random() * 1500);
+									}}
+									className="prayerReg__bodyFormRegister"
+								>
 									Confirm Jamaath
 								</button>
 							)}
@@ -268,10 +309,62 @@ function PrayerRegPage() {
 				centered
 				visible={showModal}
 				title="Your response has been recorded"
-				onOk={onHandleRegister}
-				onCancel={onHandleRegister}
+				onOk={() => {
+					// Displaying the welcome page
+					history.replace('/welcome');
+					setShowModal(false);
+
+					form.resetFields();
+					setActiveChoice('');
+					setNicPassport('');
+					setEmail('');
+					setMobileNumber();
+					setFullName('');
+				}}
+				onCancel={() => {
+					// Displaying the welcome page
+					history.replace('/welcome');
+					setShowModal(false);
+
+					form.resetFields();
+					setActiveChoice('');
+					setNicPassport('');
+					setEmail('');
+					setMobileNumber();
+					setFullName('');
+				}}
 			>
-				<p>Assalamu Alaikum {fullName}, your response has been recorded</p>
+				<p> Assalamu Alaikum {fullName}, your response has been recorded </p>
+				<p>
+					<em>
+						{' '}
+						<strong>Please take a screen shot of this for safety purpose</strong>
+					</em>
+				</p>
+				<p>
+					{' '}
+					&#8226; <strong>Name</strong>: {fullName}
+				</p>
+				<p>
+					{' '}
+					&#8226; <strong>Email</strong>: {email}
+				</p>
+				<p>
+					{' '}
+					&#8226; <strong>Mobile Number</strong>: {mobileNumber}
+				</p>
+				<p>
+					{' '}
+					&#8226; <strong>Jamaath Choice</strong>: {activeChoice}
+				</p>
+				<p>
+					{' '}
+					&#8226; <strong>NIC/Passport No </strong>:{nicPassport}
+				</p>
+				<p>
+					{' '}
+					&#8226; <strong>Date & Time</strong>: {dateTime}
+				</p>
 			</Modal>
 		</PrayerRegPageMain>
 	);
