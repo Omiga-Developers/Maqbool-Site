@@ -9,7 +9,7 @@ import prayerCoverImage from './image.jpg';
 
 function PrayerRegPage() {
 	const [showModal, setShowModal] = useState(false);
-	const [submitted, setSubmitted] = useState(false)
+	const [submitted, setSubmitted] = useState(false);
 	const history = useHistory();
 
 	//will hold the total counts
@@ -45,6 +45,17 @@ function PrayerRegPage() {
 				setJamaathThreeCount(snapshot.docs[0]?.data()['Jamaath 3']);
 			}
 		});
+
+		// testing
+		// let message = 'This is your jummah token number ';
+		// let userID = '13222';
+		// let API_Key = 'T97iXou21UsHmHXTakA3';
+		// let phoneNumber = 94764356773;
+		// fetch(
+		// 	`https://app.notify.lk/api/v1/send?user_id=${userID}&api_key=${API_Key}&sender_id=NotifyDEMO&to=${phoneNumber}&message=${message}`
+		// )
+		// 	.then((response) => response.json())
+		// 	.then((data) => console.log(data));
 	}, [jammaathOneCount, jammaathTwoCount, jammaathThreeCount]);
 
 	const handleJamaathOneChange = () => {
@@ -193,7 +204,11 @@ function PrayerRegPage() {
 								name="nic-passport"
 								rules={[{ required: true, message: 'Please fill in your NIC/Passport Number!' }]}
 							>
-								<Input id="nic-passport" onChange={(e) => setNicPassport(e.target.value)} />
+								<Input
+									id="nic-passport"
+									onChange={(e) => setNicPassport(e.target.value)}
+									placeholder="NIC - Passport Number"
+								/>
 							</Form.Item>
 						</div>
 						<div>
@@ -206,11 +221,19 @@ function PrayerRegPage() {
 									{ pattern: EMAIL_REGEX, message: 'Please enter a valid E-mail!' },
 								]}
 							>
-								<Input id="email" onChange={(e) => setEmail(e.target.value)} />
+								<Input id="email" onChange={(e) => setEmail(e.target.value)} placeholder="someone@gmail.com" />
 							</Form.Item>
 						</div>
 						<div>
-							<p>Mobile Number</p>
+							<p>
+								Mobile Number{' '}
+								<small>
+									<strong>
+										(Enter number in <strong>+947XXXXXXXX</strong> format else you <strong>won't</strong> be able to get
+										the <strong>token number</strong>)
+									</strong>
+								</small>
+							</p>
 							<Form.Item
 								className="prayerReg__bodyFormMobile"
 								name="mobile"
@@ -219,7 +242,7 @@ function PrayerRegPage() {
 									{ pattern: PHONE_NUMBER_REGEX, message: 'Please enter a valid Mobile Number!' },
 								]}
 							>
-								<Input id="mobile" onChange={(e) => setMobileNumber(e.target.value)} />
+								<Input id="mobile" onChange={(e) => setMobileNumber(e.target.value)} placeholder="+947XXXXXXXX" />
 							</Form.Item>
 						</div>
 						<div>
@@ -232,7 +255,7 @@ function PrayerRegPage() {
 									{ pattern: NAMES_REGEX, message: 'Please enter a valid name!' },
 								]}
 							>
-								<Input id="fullName" onChange={(e) => setFullName(e.target.value)} />
+								<Input id="fullName" onChange={(e) => setFullName(e.target.value)} placeholder="Full Name" />
 							</Form.Item>
 						</div>
 
