@@ -117,6 +117,7 @@ function PrayerRegPage() {
 			JamaathChoice: activeChoice,
 			time: timeRegister,
 			notified: false,
+			token: "NO TOKEN"
 		});
 
 		//jamaath counts stored in firebase
