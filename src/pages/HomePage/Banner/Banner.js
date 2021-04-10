@@ -43,7 +43,7 @@ const Banner = () => {
 						leftWidth="100%"
 						leftImage="images/banner/banner1.png"
 						padding="4rem 3vw 3rem 3vw"
-						disable={registrationDisable}
+						disable={false}
 					/>
 				</div>
 				<div>

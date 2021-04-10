@@ -45,17 +45,6 @@ function PrayerRegPage() {
 				setJamaathThreeCount(snapshot.docs[0]?.data()['Jamaath 3']);
 			}
 		});
-
-		// testing
-		// let message = 'This is your jummah token number ';
-		// let userID = '13222';
-		// let API_Key = 'T97iXou21UsHmHXTakA3';
-		// let phoneNumber = 94764356773;
-		// fetch(
-		// 	`https://app.notify.lk/api/v1/send?user_id=${userID}&api_key=${API_Key}&sender_id=NotifyDEMO&to=${phoneNumber}&message=${message}`
-		// )
-		// 	.then((response) => response.json())
-		// 	.then((data) => console.log(data));
 	}, [jammaathOneCount, jammaathTwoCount, jammaathThreeCount]);
 
 	const handleJamaathOneChange = () => {

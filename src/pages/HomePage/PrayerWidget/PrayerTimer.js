@@ -144,14 +144,22 @@ function PrayerTimer() {
 			setDisplayMaghrib(false);
 			setDisplayIsha(true);
 			setCountDownValue(IshaTimeInMins * 60000 - currentTime * 60000);
-		} else if (currentTime * 60000 >= IshaTimeInMins * 60000) {
+		} else if (currentTime * 60000 >= IshaTimeInMins * 60000 && currentTime * 60000 <= 24 * 60 * 60000) {
 			setDisplaySunrise(false);
 			setDisplayFajr(true);
 			setdisplayAsr(false);
 			setDisplayDhuhr(false);
 			setDisplayMaghrib(false);
 			setDisplayIsha(false);
-			setCountDownValue(24 * 60 * 60000 - currentTime * 60000 + FajrTimeInMins * 60000);
+			setCountDownValue((24 * 60 * 60000 - currentTime * 60000 )+ FajrTimeInMins * 60000);
+		} else {
+			setDisplaySunrise(false);
+			setDisplayFajr(true);
+			setdisplayAsr(false);
+			setDisplayDhuhr(false);
+			setDisplayMaghrib(false);
+			setDisplayIsha(false);
+			setCountDownValue(FajrTimeInMins * 60000);
 		}
 	}, [prayerDetails]);
 	return (
