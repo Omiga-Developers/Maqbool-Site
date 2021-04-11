@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import db from '../../firebase';
 import { exportToCSV } from './exportCsv';
@@ -57,20 +56,6 @@ function DashBoard() {
 						PLEASE DO NOT DELETE THIS MESSAGE UNTIL YOU COMPLETE THE PRAYER. \n
 					`}`
 				);
-				// setTimeout(() => {
-				// 	console.log(
-				// 		`
-				// 		Prayer Registration Details,
-				// 			Token Number: ${token},
-				// 			Name: ${data?.fullName},
-				// 			Email: ${data?.email},
-				// 			Mobile Number: ${data?.mobileNumber},
-				// 			NIC / Passport Number: ${data?.nicPassport},
-				// 			Time of Registration: ${data?.time},
-				// 			PLEASE DO NOT DELETE THIS MESSAGE UNTIL YOU COMPLETE THE PRAYER.
-				// 		`
-				// 	);
-				// }, 2000);
 
 				db.collection('Registered').doc(doc_id).update({
 					notified: true,
