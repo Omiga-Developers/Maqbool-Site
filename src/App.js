@@ -10,6 +10,7 @@ import HomePage from './pages/HomePage/HomePage';
 import Events from './pages/Events/Events';
 import InfoPage from './pages/InfoPage/InfoPage';
 import { useEffect, useState } from 'react';
+import DashBoard from './pages/DashBoard/DashBoard';
 
 function App() {
 	const [registrationDisable, setRegistrationDisable] = useState(true);
@@ -46,7 +47,9 @@ function App() {
 						<PrayerRegPage />
 					</Route>
 					{/* )} */}
-
+					<Route path="/dashboard">
+						<DashBoard />
+					</Route>
 					<Route path="/donate">
 						<DonatePage />
 					</Route>

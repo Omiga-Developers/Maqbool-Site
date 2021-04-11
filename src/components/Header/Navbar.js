@@ -52,6 +52,9 @@ const Navbar = () => {
 				<Menu.Item disabled={false}>
 					<Link to="/prayer-registration">Prayers Registration</Link>
 				</Menu.Item>
+				<Menu.Item>
+					<Link to="/dashboard">Dashboard</Link>
+				</Menu.Item>
 			</Menu>
 		</NavbarWrapper>
 	);
@@ -63,7 +66,7 @@ const NavbarWrapper = styled.div`
 	font-family: 'Poppins';
 	margin-bottom: -10px;
 
-	@media screen and (max-width: 950px) {
+	@media screen and (max-width: 1020px) {
 		display: none;
 	}
 
