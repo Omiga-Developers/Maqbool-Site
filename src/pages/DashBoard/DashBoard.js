@@ -1,16 +1,23 @@
 import React, { useEffect, useState } from 'react';
+import { toast, ToastContainer } from 'react-toastify';
 import styled from 'styled-components';
 import db from '../../firebase';
 import { exportToCSV } from './exportCsv';
 
 function DashBoard() {
-	const [authUser, setAuthUser] = useState(true);
+	const [authUser, setAuthUser] = useState(false);
 	const [loading, setLoading] = useState(true);
-	const USER_ID = '13227';
-	const API_KEY = '7YIDr8ytcI1iieK1Byvx';
+	const USER_ID = '12863';
+	const API_KEY = 'VCrsnCGK4CKplT0HcKlx';
 	const [userData, setUserData] = useState();
 	const { gen } = require('n-digit-token');
 	const LOADING_GIF_URL = 'https://i.stack.imgur.com/UUjhE.gif';
+	const notifyDownload = () => toast('Preparing to download the excel sheet');
+	const notifyStartTokenGeneration = () =>
+		toast(
+			'Preparing to generate tokens, please wait till all the token are generated, you will be notified once all tokens are generated'
+		);
+	const notifyEndTokenGeneration = () => toast('Successfully generated tokens for all the users');
 
 	useEffect(() => {
 		let password = prompt('Enter password to continue: ');
@@ -34,6 +41,7 @@ function DashBoard() {
 
 	// handle generated tokens for all the cusotmers
 	const handleGenerateTokens = () => {
+		notifyStartTokenGeneration();
 		for (let index = 0; index < userData?.length; index++) {
 			let doc_id = userData[index].id;
 			let data = userData[index]?.data();
@@ -42,7 +50,7 @@ function DashBoard() {
 			if (data?.notified === false) {
 				console.log('Generating token');
 				let phoneNumber = data?.mobileNumber.slice(1);
-				console.log(phoneNumber);
+				// console.log(phoneNumber);
 				// Perform notification
 				fetch(
 					`https://app.notify.lk/api/v1/send?user_id=${USER_ID}&api_key=${API_KEY}&sender_id=NotifyDEMO&to=${phoneNumber}&message=${`
@@ -57,16 +65,37 @@ function DashBoard() {
 					`}`
 				);
 
+				// setTimeout(() => {
+				// 	console.log(
+				// 		`
+				// 		Prayer Registration Details,
+				// 			Token Number: ${token},
+				// 			Name: ${data?.fullName},
+				// 			Email: ${data?.email},
+				// 			Mobile Number: ${data?.mobileNumber},
+				// 			NIC / Passport Number: ${data?.nicPassport},
+				// 			Time of Registration: ${data?.time},
+				// 			PLEASE DO NOT DELETE THIS MESSAGE UNTIL YOU COMPLETE THE PRAYER.
+				// 		`
+				// 	);
+				// }, 2000);
+
 				db.collection('Registered').doc(doc_id).update({
 					notified: true,
 					token: token,
 				});
 			}
 		}
+
+		// 2 mins for all the notifications to happen
+		setTimeout(() => {
+			notifyEndTokenGeneration();
+		}, 120 * 1000);
 	};
 
 	// creating a downloadable excel file with all the data
 	const handleDownloadData = () => {
+		notifyDownload();
 		const fileName = 'userData';
 		let exportData = [];
 
@@ -93,10 +122,15 @@ function DashBoard() {
 							<div className="dashboard__header">MAQBOOL - DASHBOARD</div>
 							<div className="dashboard__description">
 								<p>
+									<strong>IMPORTANT NOTE: </strong> Make sure you have enough credit available before clicking the
+									GENERATE TOKENS BUTTON.
+								</p>
+								<p>
 									<strong>GENERATE TOKENS:</strong> When you click this button it will generate tokens to everyone who
 									registered for the prayer. This will only generate tokens and send for the people who didn't receive
 									the token yet. So make sure you click the generate tokens button if you did not.
 								</p>
+
 								<br />
 								<p>
 									<strong>DOWNLOAD DATA:</strong> This is create a downloadable excel file with all the records of the
@@ -104,10 +138,9 @@ function DashBoard() {
 								</p>
 							</div>
 							<div className="dashboard__buttons">
-								<button onClick={handleGenerateTokens} disabled={true}>
-									GENERATE TOKENS
-								</button>
+								<button onClick={handleGenerateTokens}>GENERATE TOKENS</button>
 								<button onClick={handleDownloadData}>DOWNLOAD DATA</button>
+								<ToastContainer hideProgressBar={true} autoClose={3000} />
 							</div>
 							<br />
 							<br />
@@ -133,7 +166,7 @@ const DashBoardContainer = styled.div`
 	.dashboard__invalidUser > p {
 		margin: 270px 30px;
 		color: #045762;
-        text-align: center;
+		text-align: center;
 		font-size: 25px;
 		font-weight: bold;
 	}
@@ -161,9 +194,9 @@ const DashBoardContainer = styled.div`
 		font-size: 15px;
 		color: white;
 	}
-	.dashboard__buttons > button:last-child {
-		background-color: white;
-		color: #045762;
+	.dashboard__buttons > button:nth-child(2) {
+		background-color: white !important;
+		color: #045762 !important;
 	}
 	.dashboard__description > p > strong {
 		color: #045762;
@@ -187,7 +220,7 @@ const DashBoardContainer = styled.div`
 	}
 	@media screen and (max-width: 600px) {
 		margin: 20px 50px;
-        /* .dashboard__invalidUser > p {
+		/* .dashboard__invalidUser > p {
 			margin: 180px 30px;
 		} */
 		.dashboard__header {
