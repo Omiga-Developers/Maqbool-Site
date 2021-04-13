@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Logo from './logo.svg';
-import { Link } from 'react-router-dom';
 
 const Footer = () => {
 	const [registrationDisable, setRegistrationDisable] = useState(true);
@@ -42,7 +42,7 @@ const Footer = () => {
 				</div>
 				<div className="call">
 					<strong>Call:</strong>
-					<p>077 880 1910</p>
+					<p>071 925 0289</p>
 				</div>
 			</div>
 			<div className="right">

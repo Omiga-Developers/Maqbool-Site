@@ -15,7 +15,7 @@ function DashBoard() {
 	const notifyDownload = () => toast('Preparing to download the excel sheet');
 	const notifyStartTokenGeneration = () =>
 		toast(
-			'Preparing to generate tokens, please wait till all the token are generated, you will be notified once all tokens are generated'
+			'Preparing to generate tokens, please wait till all the token are generated, you will be notified once all tokens are generated (This will take 2mins approximately)'
 		);
 	const notifyEndTokenGeneration = () => toast('Successfully generated tokens for all the users');
 
