@@ -1,13 +1,13 @@
-import { Button, Divider, Drawer, List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
+import { Button, Drawer, List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import GroupIcon from '@material-ui/icons/Group';
+import MenuIcon from '@material-ui/icons/Menu';
 import TouchAppIcon from '@material-ui/icons/TouchApp';
 import clsx from 'clsx';
-import MenuIcon from '@material-ui/icons/Menu';
 import React, { useEffect, useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 
 const useStyles = makeStyles({
