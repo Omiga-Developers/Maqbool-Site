@@ -19,6 +19,7 @@ const Navbar = () => {
 		let disableTargetTime = 12 * 60;
 		let currentTime = date.getHours() * 60 + date.getMinutes();
 
+		// Enable
 		if (date.getDay() === 3) {
 			if (currentTime >= enableTargetTime) {
 				setRegistrationDisable(false);
@@ -49,7 +50,7 @@ const Navbar = () => {
 				<Menu.Item>
 					<Link to="/donate">Donate</Link>
 				</Menu.Item>
-				<Menu.Item disabled={false}>
+				<Menu.Item disabled={registrationDisable}>
 					<Link to="/prayer-registration">Prayers Registration</Link>
 				</Menu.Item>
 				<Menu.Item>

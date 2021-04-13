@@ -4,7 +4,6 @@ import styled from 'styled-components';
 
 const BannerItem = ({ title, paragraph, button, leftImage, leftWidth, padding, disable }) => {
 	
-
 	return (
 		<BannerItemWrapper>
 			<div

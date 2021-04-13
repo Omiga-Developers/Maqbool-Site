@@ -7,8 +7,8 @@ import { exportToCSV } from './exportCsv';
 function DashBoard() {
 	const [authUser, setAuthUser] = useState(false);
 	const [loading, setLoading] = useState(true);
-	const USER_ID = '12863';
-	const API_KEY = 'VCrsnCGK4CKplT0HcKlx';
+	// const USER_ID = '12863';
+	// const API_KEY = 'VCrsnCGK4CKplT0HcKlx';
 	const [userData, setUserData] = useState();
 	const { gen } = require('n-digit-token');
 	const LOADING_GIF_URL = 'https://i.stack.imgur.com/UUjhE.gif';
@@ -49,37 +49,23 @@ function DashBoard() {
 
 			if (data?.notified === false) {
 				console.log('Generating token');
-				let phoneNumber = data?.mobileNumber.slice(1);
+				// let phoneNumber = data?.mobileNumber.slice(1);
 				// console.log(phoneNumber);
 				// Perform notification
-				fetch(
-					`https://app.notify.lk/api/v1/send?user_id=${USER_ID}&api_key=${API_KEY}&sender_id=NotifyDEMO&to=${phoneNumber}&message=${`
-						Prayer Registration Details,
-						Token Number: ${token} \n,
-						Name: ${data?.fullName} \n,
-						Email: ${data?.email} \n,
-						Mobile Number: ${data?.mobileNumber} \n,
-						NIC / Passport Number: ${data?.nicPassport} \n,
-						Time of Registration: ${data?.time} \n,
-						PLEASE DO NOT DELETE THIS MESSAGE UNTIL YOU COMPLETE THE PRAYER. \n
-					`}`
-				);
-
-				// setTimeout(() => {
-				// 	console.log(
-				// 		`
+				// fetch(
+				// 	`https://app.notify.lk/api/v1/send?user_id=${USER_ID}&api_key=${API_KEY}&sender_id=NotifyDEMO&to=${phoneNumber}&message=${`
 				// 		Prayer Registration Details,
-				// 			Token Number: ${token},
-				// 			Name: ${data?.fullName},
-				// 			Email: ${data?.email},
-				// 			Mobile Number: ${data?.mobileNumber},
-				// 			NIC / Passport Number: ${data?.nicPassport},
-				// 			Time of Registration: ${data?.time},
-				// 			PLEASE DO NOT DELETE THIS MESSAGE UNTIL YOU COMPLETE THE PRAYER.
-				// 		`
-				// 	);
-				// }, 2000);
+				// 		Token Number: ${token} \n,
+				// 		Name: ${data?.fullName} \n,
+				// 		Email: ${data?.email} \n,
+				// 		Mobile Number: ${data?.mobileNumber} \n,
+				// 		NIC / Passport Number: ${data?.nicPassport} \n,
+				// 		Time of Registration: ${data?.time} \n,
+				// 		PLEASE DO NOT DELETE THIS MESSAGE UNTIL YOU COMPLETE THE PRAYER. \n
+				// 	`}`
+				// );
 
+				// Updating the database with the TOKEN NUMBERS
 				db.collection('Registered').doc(doc_id).update({
 					notified: true,
 					token: token,

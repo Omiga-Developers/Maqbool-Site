@@ -12,7 +12,7 @@ const Footer = () => {
 		let disableTargetTime = 12 * 60;
 		let currentTime = date.getHours() * 60 + date.getMinutes();
 
-		// enable
+		// Enable
 		if (date.getDay() === 3) {
 			if (currentTime >= enableTargetTime) {
 				setRegistrationDisable(false);
@@ -20,7 +20,7 @@ const Footer = () => {
 		} else if (date.getDay() === 4) {
 			if (currentTime >= disableTargetTime) {
 				setRegistrationDisable(true);
-			}else{
+			} else {
 				setRegistrationDisable(false);
 			}
 		} else {
@@ -63,7 +63,7 @@ const Footer = () => {
 						</Link>
 					</p>
 					<p>
-						<Link to="/prayer-registration" target="_top" disabled = {false}>
+						<Link to="/prayer-registration" target="_top" disabled = {registrationDisable}>
 							Prayers Registration
 						</Link>
 					</p>

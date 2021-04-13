@@ -12,10 +12,6 @@ const Banner = () => {
 		let disableTargetTime = 12 * 60;
 		let currentTime = date.getHours() * 60 + date.getMinutes();
 
-		console.log(date.getDay());
-		console.log(currentTime);
-		console.log(enableTargetTime);
-
 		// Enable
 		if (date.getDay() === 3) {
 			if (currentTime >= enableTargetTime) {
@@ -30,6 +26,7 @@ const Banner = () => {
 		} else {
 			setRegistrationDisable(true);
 		}
+
 	}, []);
 
 	return (
@@ -43,7 +40,7 @@ const Banner = () => {
 						leftWidth="100%"
 						leftImage="images/banner/banner1.png"
 						padding="4rem 3vw 3rem 3vw"
-						disable={false}
+						disable={registrationDisable}
 					/>
 				</div>
 				<div>

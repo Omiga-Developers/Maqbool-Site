@@ -6,6 +6,7 @@ import { useHistory } from 'react-router';
 import styled from 'styled-components';
 import db from '../../firebase';
 import prayerCoverImage from './image.jpg';
+import { Redirect } from 'react-router-dom';
 
 function PrayerRegPage() {
 	const [showModal, setShowModal] = useState(false);
@@ -34,6 +35,26 @@ function PrayerRegPage() {
 	const EMAIL_REGEX = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 	const PHONE_NUMBER_REGEX = /^[+]*[(]{0,1}[0-9]{1,3}[)]{0,1}[-\s\./0-9]*$/g;
 	const NAMES_REGEX = /^[a-z ,.'-]+$/i;
+
+	useEffect(() => {
+		let date = new Date();
+		let enableTargetTime = 9 * 60 + 55; // Real Enable time
+		let disableTargetTime = 12 * 60; // Real Disable time
+		let currentTime = date.getHours() * 60 + date.getMinutes();
+
+		// REDIRECTION OF ROUTES BASED ON TIMINGS
+		if (date.getDay() === 3) {
+			if (currentTime < enableTargetTime) {
+				history.replace('/home');
+			}
+		} else if (date.getDay() === 4) {
+			if (currentTime > disableTargetTime) {
+				history.replace('/home');
+			}
+		} else {
+			history.replace('/home');
+		}
+	}, []);
 
 	useEffect(() => {
 		//refetch counts
@@ -106,7 +127,7 @@ function PrayerRegPage() {
 			JamaathChoice: activeChoice,
 			time: timeRegister,
 			notified: false,
-			token: "NO TOKEN"
+			token: 'NO TOKEN',
 		});
 
 		//jamaath counts stored in firebase

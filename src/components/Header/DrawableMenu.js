@@ -33,7 +33,7 @@ function DrawableMenu() {
 		let disableTargetTime = 12 * 60;
 		let currentTime = date.getHours() * 60 + date.getMinutes();
 
-
+		// Enable
 		if (date.getDay() === 3) {
 			if (currentTime >= enableTargetTime) {
 				setRegistrationDisable(false);
@@ -41,7 +41,7 @@ function DrawableMenu() {
 		} else if (date.getDay() === 4) {
 			if (currentTime >= disableTargetTime) {
 				setRegistrationDisable(true);
-			}else{
+			} else {
 				setRegistrationDisable(false);
 			}
 		} else {
@@ -90,7 +90,7 @@ function DrawableMenu() {
 					</ListItemIcon>
 					<ListItemText primary="Donate" onClick={() => history.replace('/donate')} />
 				</ListItem>
-				<ListItem button key="Prayers Registration" disabled={false}>
+				<ListItem button key="Prayers Registration" disabled={registrationDisable}>
 					<ListItemIcon>
 						<TouchAppIcon onClick={() => history.replace('/prayer-registration')} />
 					</ListItemIcon>

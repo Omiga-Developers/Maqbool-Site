@@ -9,44 +9,18 @@ import AboutUsPage from './pages/AboutUsPage/AboutUsPage';
 import HomePage from './pages/HomePage/HomePage';
 import Events from './pages/Events/Events';
 import InfoPage from './pages/InfoPage/InfoPage';
-import { useEffect, useState } from 'react';
 import DashBoard from './pages/DashBoard/DashBoard';
 
 function App() {
-	const [registrationDisable, setRegistrationDisable] = useState(true);
-
-	useEffect(() => {
-		let date = new Date();
-		let enableTargetTime = 9 * 60 + 55;
-		let disableTargetTime = 12 * 60;
-		let currentTime = date.getHours() * 60 + date.getMinutes();
-
-		if (date.getDay() === 3) {
-			if (currentTime >= enableTargetTime) {
-				setRegistrationDisable(false);
-			}
-		} else if (date.getDay() === 4) {
-			if (currentTime >= disableTargetTime) {
-				setRegistrationDisable(true);
-			} else {
-				setRegistrationDisable(false);
-			}
-		} else {
-			setRegistrationDisable(true);
-		}
-	}, []);
-
 	return (
 		<Router>
 			<GlobalStyles />
 			<Header />
 			<div className="app">
 				<Switch>
-					{/* {!registrationDisable && ( */}
 					<Route path="/prayer-registration">
 						<PrayerRegPage />
 					</Route>
-					{/* )} */}
 					<Route path="/dashboard">
 						<DashBoard />
 					</Route>
