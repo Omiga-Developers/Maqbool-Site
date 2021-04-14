@@ -56,15 +56,28 @@ function PrayerRegPage() {
 		}
 	}, []);
 
+	// Updated use effect
 	useEffect(() => {
-		//refetch counts
-		// db.collection('Jamaath Counts');
-		db.collection('Jamaath Counts')?.onSnapshot((snapshot) => {
-			if (snapshot.docs.length > 0) {
-				setJamaathOneCount(snapshot.docs[0]?.data()['Jamaath 1']);
-				setJamaathTwoCount(snapshot.docs[0]?.data()['Jamaath 2']);
-				setJamaathThreeCount(snapshot.docs[0]?.data()['Jamaath 3']);
+		db.collection('Registered')?.onSnapshot((snapshot) => {
+			let JamOne = 0;
+			let JamTwo = 0;
+			let JamThree = 0;
+
+			for (let index = 0; index < snapshot.docs?.length; index++) {
+				const registrationData = snapshot.docs[index]?.data();
+
+				if (registrationData['JamaathChoice'] === 'Jamaath 1') {
+					JamOne = JamOne + 1;
+				} else if (registrationData['JamaathChoice'] === 'Jamaath 2') {
+					JamTwo = JamTwo + 1;
+				} else if (registrationData['JamaathChoice'] === 'Jamaath 3') {
+					JamThree = JamThree + 1;
+				}
 			}
+
+			setJamaathOneCount(JamOne);
+			setJamaathTwoCount(JamTwo);
+			setJamaathThreeCount(JamThree);
 		});
 	}, [jammaathOneCount, jammaathTwoCount, jammaathThreeCount]);
 
@@ -139,6 +152,9 @@ function PrayerRegPage() {
 				'Jamaath 2': jammaathTwoCount + currentJammaathTwo,
 				'Jamaath 3': jammaathThreeCount + currentJammaathThree,
 			});
+
+		setShowModal(true);
+		setSubmitted(false);
 	};
 
 	return (
@@ -315,7 +331,12 @@ function PrayerRegPage() {
 							!email ||
 							!mobileNumber ||
 							!fullName ? (
-								<button disabled htmlType="submit" className="prayerReg__bodyFormRegister">
+								<button
+									disabled
+									htmlType="submit"
+									style={{ backgroundColor: 'grey', color: 'white', borderColor: 'white' }}
+									className="prayerReg__bodyFormRegister"
+								>
 									Confirm Jamaath
 								</button>
 							) : (
@@ -326,13 +347,11 @@ function PrayerRegPage() {
 										setSubmitted(true);
 										setTimeout(() => {
 											onHandleRegister();
-											setShowModal(true);
-											setSubmitted(false);
 										}, Math.random() * 1500 + Math.random() * 1500);
 									}}
 									className="prayerReg__bodyFormRegister"
 								>
-									Confirm Jamaath
+									{submitted ? <>Registering...</> : <>Confirm Jamaath</>}
 								</button>
 							)}
 						</div>
