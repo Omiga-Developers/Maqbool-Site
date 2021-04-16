@@ -22,7 +22,7 @@ function DashBoard() {
 	useEffect(() => {
 		let password = prompt('Enter password to continue: ');
 		console.log(password);
-		if (password === 'Somethingyoucantguess@786') {
+		if (password === 'Thisismydashboardpassword') {
 			setAuthUser(true);
 		} else {
 			setAuthUser(false);
