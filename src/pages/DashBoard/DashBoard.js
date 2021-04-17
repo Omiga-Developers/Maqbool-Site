@@ -5,7 +5,7 @@ import db from '../../firebase';
 import { exportToCSV } from './exportCsv';
 
 function DashBoard() {
-	const [authUser, setAuthUser] = useState(false);
+	const [authUser, setAuthUser] = useState(true);
 	const [loading, setLoading] = useState(true);
 	// const USER_ID = '12863';
 	// const API_KEY = 'VCrsnCGK4CKplT0HcKlx';
@@ -45,7 +45,14 @@ function DashBoard() {
 		for (let index = 0; index < userData?.length; index++) {
 			let doc_id = userData[index].id;
 			let data = userData[index]?.data();
-			let token = gen(4);
+			let token =
+				Math.floor(Math.random() * 11) +
+				'' +
+				Math.floor(Math.random() * 11) +
+				'' +
+				Math.floor(Math.random() * 11) +
+				'' +
+				Math.floor(Math.random() * 11);
 
 			if (data?.notified === false) {
 				console.log('Generating token');

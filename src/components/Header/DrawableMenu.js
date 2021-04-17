@@ -29,25 +29,20 @@ function DrawableMenu() {
 
 	useEffect(() => {
 		let date = new Date();
-		let enableTargetTime = 9 * 60 + 55;
-		let disableTargetTime = 12 * 60;
+		let enableTargetTime = 13 * 60 + 45; // Real Enable time
+		let disableTargetTime = 14 * 60; // Real Disable time
 		let currentTime = date.getHours() * 60 + date.getMinutes();
 
-		// Enable
-		if (date.getDay() === 3) {
-			if (currentTime >= enableTargetTime) {
+		// Enable and Disable
+		if(date.getDay() === 3) {
+			if(currentTime >= enableTargetTime && currentTime <= disableTargetTime){
 				setRegistrationDisable(false);
-			}
-		} else if (date.getDay() === 4) {
-			if (currentTime >= disableTargetTime) {
+			}else{
 				setRegistrationDisable(true);
-			} else {
-				setRegistrationDisable(false);
 			}
-		} else {
+		}else{
 			setRegistrationDisable(true);
 		}
-
 	}, []);
 
 	const toggleDrawer = (anchor, open) => (event) => {

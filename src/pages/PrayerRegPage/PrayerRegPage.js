@@ -12,11 +12,12 @@ function PrayerRegPage() {
 	const [showModal, setShowModal] = useState(false);
 	const [submitted, setSubmitted] = useState(false);
 	const history = useHistory();
+	const [full, setFull] = useState(false);
 
 	//will hold the total counts
-	const [jammaathOneCount, setJamaathOneCount] = useState(0);
-	const [jammaathTwoCount, setJamaathTwoCount] = useState(0);
-	const [jammaathThreeCount, setJamaathThreeCount] = useState(0);
+	const [jammaathOneCount, setJamaathOneCount] = useState(null);
+	const [jammaathTwoCount, setJamaathTwoCount] = useState(null);
+	const [jammaathThreeCount, setJamaathThreeCount] = useState(null);
 
 	//will just be a temporary flag to toggle current counts
 	const [currentJammaathOne, setCurrentJamaathOne] = useState(0);
@@ -36,19 +37,16 @@ function PrayerRegPage() {
 	const PHONE_NUMBER_REGEX = /^[+]*[(]{0,1}[0-9]{1,3}[)]{0,1}[-\s\./0-9]*$/g;
 	const NAMES_REGEX = /^[a-z ,.'-]+$/i;
 
+	// Wednesday -> 3 
 	useEffect(() => {
 		let date = new Date();
-		let enableTargetTime = 9 * 60 + 55; // Real Enable time
-		let disableTargetTime = 12 * 60; // Real Disable time
+		let enableTargetTime = 13 * 60 + 45; // Real Enable time
+		let disableTargetTime = 14 * 60; // Real Disable time
 		let currentTime = date.getHours() * 60 + date.getMinutes();
 
 		// REDIRECTION OF ROUTES BASED ON TIMINGS
 		if (date.getDay() === 3) {
-			if (currentTime < enableTargetTime) {
-				history.replace('/home');
-			}
-		} else if (date.getDay() === 4) {
-			if (currentTime > disableTargetTime) {
+			if(!(currentTime >= enableTargetTime && currentTime <= disableTargetTime)){
 				history.replace('/home');
 			}
 		} else {
@@ -73,6 +71,10 @@ function PrayerRegPage() {
 				} else if (registrationData['JamaathChoice'] === 'Jamaath 3') {
 					JamThree = JamThree + 1;
 				}
+			}
+
+			if (JamOne >= 75 && JamTwo >= 75 && JamThree >= 75) {
+				setFull(true);
 			}
 
 			setJamaathOneCount(JamOne);
@@ -104,22 +106,22 @@ function PrayerRegPage() {
 
 	const jamaathOptions = () => (
 		<Menu style={{ width: '250px' }}>
-			{/* limit: 50 */}
-			{(jammaathOneCount < 50 || jammaathOneCount === undefined) && (
+			{/* limit: 75 */}
+			{(jammaathOneCount < 75 || jammaathOneCount === undefined) && (
 				<Menu.Item key="0">
 					<a onClick={handleJamaathOneChange}>Jamaath 1</a>
 				</Menu.Item>
 			)}
 			<Menu.Divider />
-			{/* limit: 50 */}
-			{(jammaathTwoCount < 50 || jammaathOneCount === undefined) && (
+			{/* limit: 75 */}
+			{(jammaathTwoCount < 75 || jammaathOneCount === undefined) && (
 				<Menu.Item key="1">
 					<a onClick={handleJamaathTwoChange}>Jamaath 2</a>
 				</Menu.Item>
 			)}
 			<Menu.Divider />
-			{/* limit: 50 */}
-			{(jammaathThreeCount < 50 || jammaathOneCount === undefined) && (
+			{/* limit: 75 */}
+			{(jammaathThreeCount < 75 || jammaathOneCount === undefined) && (
 				<Menu.Item key="2">
 					<a onClick={handleJamaathThreeChange}>Jamaath 3</a>
 				</Menu.Item>
@@ -171,13 +173,44 @@ function PrayerRegPage() {
 
 					<p>
 						{' '}
-						&#8226; Registration does not guarantee a spot for prayers, If you have registered and dont recieve a token
-						via SMS means that you have not been selected.{' '}
+						&#8226; Registration does not guarantee a spot for prayers, If you have registered and dont recieve a toke via SMS means that you have not been selected.{' '}
 					</p>
 					<p>
 						{' '}
-						&#8226; Its compulsory to bring your own prayer mats and mask, Failure to do so will result in giving your
+						&#8226; Face mask and musalla compulsory, Failure to do so will result in giving your
 						spot to another person.{' '}
+					</p>
+					<p>
+						{' '}
+						&#8226; Wear face mask at all times when in the masjid.{' '}
+					</p>
+					<p>
+						{' '}
+						&#8226; Maintain social distance and pray only in the designated marked places fr Namaaz.{' '}
+					</p>
+					<p>
+						{' '}
+						&#8226; Hand wash and sanitizer provided at the gate.{' '}
+					</p>
+					<p>
+						{' '}
+						&#8226; Late Entry will not be permitted{' '}
+					</p>
+					<p>
+						{' '}
+						&#8226; If possible please come in wudu{' '}
+					</p>
+					<p>
+						{' '}
+						&#8226; Wear cap when in the masjid and Specially during prayers.{' '}
+					</p>
+					<p>
+						{' '}
+						&#8226; Once you finish your jummah namaaz, duaa and salat-O-Salaam pls leave the masjid as people fr the next jama’ath can enter.{' '}
+					</p>
+					<p>
+						{' '}
+						&#8226; Please cooperate with the masjid staff and trustees to main the guide lines, rules and regulations provided by the health ministry.{' '}
 					</p>
 					<p>
 						{' '}
@@ -186,14 +219,11 @@ function PrayerRegPage() {
 					</p>
 					<p>
 						{' '}
-						&#8226; Please do not contact any staff members via Call or whatsapp to their personal numbers. We will only
-						accept complaints through the complaints form on the website.{' '}
+						&#8226; Please do not contact any staff members via Call or whatsapp to their personal numbers. We will only accept complaints through the complaints form on the website.{' '}
 					</p>
-					<p> &#8226; Children below the age of 15 will not be allowed to enter </p>
+					<p> &#8226; Children below 15 years strictly prohibited. </p>
 					<p>
-						{' '}
-						&#8226; A Valid ID number and phone number is required for each application, If incorrect, your application
-						will be revoked.{' '}
+						&#8226; A Valid ID number and phone number is required for each application, If incorrect, your application will be revoked.{' '}
 					</p>
 					<p> &#8226; Each individual should submit with their own NIC/PASSPORT number and mobile number </p>
 					<p>
@@ -209,7 +239,6 @@ function PrayerRegPage() {
 						FAVORATION OR SELECTING CLOSE FRIENDS FIRST.{' '}
 					</p>
 					<p>
-						{' '}
 						&#8226; Any calls made to the team handling the registration will not be answered and complaints are
 						strictly to be typed on the complaints form. Please do not be rude to the team.{' '}
 					</p>
@@ -292,40 +321,49 @@ function PrayerRegPage() {
 								<div className="jamaath01">
 									<p>Jamaath 1</p>
 									<p>Gates Open at - 12:10</p>
-									<p>Kuthuba - 12:30</p>
-									<p>Namaaz - 12:45</p>
+									<p>Kuthuba - 13:20</p>
+									<p>Namaaz - 13:30</p>
 								</div>
 								<div className="jamaath02">
 									<p>Jamaath 2</p>
 									<p>Gates Open at - 12:50</p>
-									<p>Kuthuba - 13:00</p>
-									<p>Namaaz - 13:15</p>
+									<p>Kuthuba - 12: 50</p>
+									<p>Namaaz - 13:00</p>
 								</div>
 								<div className="jamaath03">
 									<p>Jamaath 3</p>
 									<p>Gates Open at - 13:20</p>
-									<p>Kuthuba - 13:30</p>
-									<p>Namaaz - 13:45</p>
+									<p>Kuthuba - 13:20</p>
+									<p>Namaaz - 13:30</p>
 								</div>
 							</section>
 						</div>
 
 						<div className="JamaathOptions">
-							<p>Jamaath Options</p>
-							<div style={{ width: '250px' }}>
-								<Dropdown overlay={jamaathOptions} trigger={['click']}>
-									<Button style={{ width: '100%', display: 'flex', justifyContent: 'space-between' }}>
-										<span>{activeChoice}</span>
-										<span>
-											<DownOutlined />
-										</span>
-									</Button>
-								</Dropdown>
-							</div>
+							{!full && <p>Jamaath Options</p>}
+
+							{jammaathThreeCount !== null ? (
+								full ? (
+									<p>All Jamaaths are Full! </p>
+								) : (
+									<div style={{ width: '250px' }}>
+										<Dropdown overlay={jamaathOptions} trigger={['click']}>
+											<Button style={{ width: '100%', display: 'flex', justifyContent: 'space-between' }}>
+												<span>{activeChoice}</span>
+												<span>
+													<DownOutlined />
+												</span>
+											</Button>
+										</Dropdown>
+									</div>
+								)
+							) : (
+								<p>Loading . . .</p>
+							)}
 						</div>
 
 						<div className="contactUs__formBtn">
-							{(jammaathOneCount >= 50 && jammaathTwoCount >= 50 && jammaathThreeCount >= 50) ||
+							{(jammaathOneCount >= 75 && jammaathTwoCount >= 75 && jammaathThreeCount >= 75) ||
 							!activeChoice ||
 							!nicPassport ||
 							!email ||
@@ -435,7 +473,6 @@ const PrayerRegPageMain = styled.div`
 			opacity: 1;
 		}
 	}
-
 	.prayerReg__title {
 		background-image: url(${prayerCoverImage});
 		background-repeat: no-repeat;
