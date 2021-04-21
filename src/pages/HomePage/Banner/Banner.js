@@ -8,8 +8,8 @@ const Banner = () => {
 
 	useEffect(() => {
 		let date = new Date();
-		let enableTargetTime = 13 * 60 + 45; // Real Enable time
-		let disableTargetTime = 14 * 60; // Real Disable time
+		let enableTargetTime = 14 * 60 + 45; // Real Enable time
+		let disableTargetTime = 15 * 60; // Real Disable time
 		let currentTime = date.getHours() * 60 + date.getMinutes();
 
 		// Enable and Disable

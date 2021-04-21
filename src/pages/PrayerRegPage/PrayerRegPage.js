@@ -6,7 +6,6 @@ import { useHistory } from 'react-router';
 import styled from 'styled-components';
 import db from '../../firebase';
 import prayerCoverImage from './image.jpg';
-import { Redirect } from 'react-router-dom';
 
 function PrayerRegPage() {
 	const [showModal, setShowModal] = useState(false);
@@ -37,11 +36,11 @@ function PrayerRegPage() {
 	const PHONE_NUMBER_REGEX = /^[+]*[(]{0,1}[0-9]{1,3}[)]{0,1}[-\s\./0-9]*$/g;
 	const NAMES_REGEX = /^[a-z ,.'-]+$/i;
 
-	// Wednesday -> 3 
+	// Wednesday -> 3
 	useEffect(() => {
 		let date = new Date();
-		let enableTargetTime = 13 * 60 + 45; // Real Enable time
-		let disableTargetTime = 14 * 60; // Real Disable time
+		let enableTargetTime = 14 * 60 + 45; // Real Enable time
+		let disableTargetTime = 15 * 60; // Real Disable time
 		let currentTime = date.getHours() * 60 + date.getMinutes();
 
 		// REDIRECTION OF ROUTES BASED ON TIMINGS
@@ -169,48 +168,36 @@ function PrayerRegPage() {
 			<div className="prayerReg__body">
 				<div className="prayerReg__bodyDescription">
 					<h2>Maqbool Jumuah Registration</h2>
-					<p>Terms and Conditions</p>
+					<p>In the month of Ramadan, all jummah namaaz will be THREE JAMA’ATH’S</p>
+					<strong>
+						<p>Terms and Conditions</p>
+					</strong>
 
 					<p>
 						{' '}
-						&#8226; Registration does not guarantee a spot for prayers, If you have registered and dont recieve a toke via SMS means that you have not been selected.{' '}
+						&#8226; Registration does not guarantee a spot for prayers, If you have registered and dont recieve a toke
+						via SMS means that you have not been selected.{' '}
 					</p>
 					<p>
 						{' '}
-						&#8226; Face mask and musalla compulsory, Failure to do so will result in giving your
-						spot to another person.{' '}
+						&#8226; Face mask and musalla compulsory, Failure to do so will result in giving your spot to another
+						person.{' '}
+					</p>
+					<p> &#8226; Wear face mask at all times when in the masjid. </p>
+					<p> &#8226; Maintain social distance and pray only in the designated marked places fr Namaaz. </p>
+					<p> &#8226; Hand wash and sanitizer provided at the gate. </p>
+					<p> &#8226; Late Entry will not be permitted </p>
+					<p> &#8226; If possible please come in wudu </p>
+					<p> &#8226; Wear cap when in the masjid and Specially during prayers. </p>
+					<p>
+						{' '}
+						&#8226; Once you finish your jummah namaaz, duaa and salat-O-Salaam pls leave the masjid as people fr the
+						next jama’ath can enter.{' '}
 					</p>
 					<p>
 						{' '}
-						&#8226; Wear face mask at all times when in the masjid.{' '}
-					</p>
-					<p>
-						{' '}
-						&#8226; Maintain social distance and pray only in the designated marked places fr Namaaz.{' '}
-					</p>
-					<p>
-						{' '}
-						&#8226; Hand wash and sanitizer provided at the gate.{' '}
-					</p>
-					<p>
-						{' '}
-						&#8226; Late Entry will not be permitted{' '}
-					</p>
-					<p>
-						{' '}
-						&#8226; If possible please come in wudu{' '}
-					</p>
-					<p>
-						{' '}
-						&#8226; Wear cap when in the masjid and Specially during prayers.{' '}
-					</p>
-					<p>
-						{' '}
-						&#8226; Once you finish your jummah namaaz, duaa and salat-O-Salaam pls leave the masjid as people fr the next jama’ath can enter.{' '}
-					</p>
-					<p>
-						{' '}
-						&#8226; Please cooperate with the masjid staff and trustees to main the guide lines, rules and regulations provided by the health ministry.{' '}
+						&#8226; Please cooperate with the masjid staff and trustees to main the guide lines, rules and regulations
+						provided by the health ministry.{' '}
 					</p>
 					<p>
 						{' '}
@@ -219,11 +206,13 @@ function PrayerRegPage() {
 					</p>
 					<p>
 						{' '}
-						&#8226; Please do not contact any staff members via Call or whatsapp to their personal numbers. We will only accept complaints through the complaints form on the website.{' '}
+						&#8226; Please do not contact any staff members via Call or whatsapp to their personal numbers. We will only
+						accept complaints through the complaints form on the website.{' '}
 					</p>
 					<p> &#8226; Children below 15 years strictly prohibited. </p>
 					<p>
-						&#8226; A Valid ID number and phone number is required for each application, If incorrect, your application will be revoked.{' '}
+						&#8226; A Valid ID number and phone number is required for each application, If incorrect, your application
+						will be revoked.{' '}
 					</p>
 					<p> &#8226; Each individual should submit with their own NIC/PASSPORT number and mobile number </p>
 					<p>
@@ -319,22 +308,22 @@ function PrayerRegPage() {
 							<p>Jamaath Timings</p>
 							<section className="prayerReg__bodyJamaathContainer">
 								<div className="jamaath01">
-									<p>Jamaath 1</p>
-									<p>Gates Open at - 12:10</p>
-									<p>Kuthuba - 13:20</p>
-									<p>Namaaz - 13:30</p>
+									<p>Jama’ath 1</p>
+									<p>Enter at - 12:00pm</p>
+									<p>Kuthba at - 12:20pm</p>
+									<p>Namaaz at - 12:30pm</p>
 								</div>
 								<div className="jamaath02">
-									<p>Jamaath 2</p>
-									<p>Gates Open at - 12:50</p>
-									<p>Kuthuba - 12: 50</p>
-									<p>Namaaz - 13:00</p>
+									<p>Jama’ath 2</p>
+									<p>Enter at - 12:45pm</p>
+									<p>Kuthba at - 12:50pm</p>
+									<p>Namaaz at - 1:00pm</p>
 								</div>
 								<div className="jamaath03">
-									<p>Jamaath 3</p>
-									<p>Gates Open at - 13:20</p>
-									<p>Kuthuba - 13:20</p>
-									<p>Namaaz - 13:30</p>
+									<p>Jama’ath 3</p>
+									<p>Enter at - 1:15pm</p>
+									<p>Kuthba at - 1:20pm</p>
+									<p>Namaaz at - 1:30pm</p>
 								</div>
 							</section>
 						</div>
@@ -502,6 +491,7 @@ const PrayerRegPageMain = styled.div`
 		margin: 30px 0;
 	}
 	.prayerReg__bodyDescription > p,
+	.prayerReg__bodyDescription > strong > p,
 	.prayerReg__bodyFormSection > div > p {
 		color: #045762;
 		font-size: 20px;
