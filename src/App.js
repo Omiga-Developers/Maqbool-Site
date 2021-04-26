@@ -1,22 +1,41 @@
+import 'antd/dist/antd.css';
+import React, { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
+import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
 import { GlobalStyles } from './GlobalStyles.styles';
-import 'antd/dist/antd.css';
-import Footer from './components/Footer/Footer';
-import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
-import PrayerRegPage from './pages/PrayerRegPage/PrayerRegPage';
-import DonatePage from './pages/DonatePage/DonatePage';
 import AboutUsPage from './pages/AboutUsPage/AboutUsPage';
-import HomePage from './pages/HomePage/HomePage';
-import Events from './pages/Events/Events';
-import InfoPage from './pages/InfoPage/InfoPage';
 import DashBoard from './pages/DashBoard/DashBoard';
+import DonatePage from './pages/DonatePage/DonatePage';
+import Events from './pages/Events/Events';
+import HomePage from './pages/HomePage/HomePage';
+import InfoPage from './pages/InfoPage/InfoPage';
+import PrayerRegPage from './pages/PrayerRegPage/PrayerRegPage';
 
 function App() {
+	let date = new Date();
+	const [opacityValue, setOpacityValue] = useState(1);
+
+	// Reducing Opacity
+	useEffect(() => {
+		let value = 0;
+		if (date.getMonth() === 3) {
+			value = (34 - date.getDate()) / 10;
+		} else if (date.getMonth() === 4) {
+			if (date.getDate() >= 2) {
+				value = 0;
+			} else {
+				value = (2 - date.getDate()) / 10;
+			}
+		}
+		setOpacityValue(value);
+	}, []);
+
 	return (
 		<Router>
-			<GlobalStyles />
-			<Header />
-			<div className="app">
+			<div style={{ opacity: opacityValue }}>
+				<GlobalStyles />
+				<Header />
 				<Switch>
 					<Route path="/prayer-registration">
 						<PrayerRegPage />
@@ -44,8 +63,8 @@ function App() {
 						<HomePage />
 					</Route>
 				</Switch>
+				<Footer />
 			</div>
-			<Footer />
 		</Router>
 	);
 }
