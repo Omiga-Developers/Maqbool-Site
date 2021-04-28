@@ -39,17 +39,21 @@ function PrayerRegPage() {
 	// Wednesday -> 3
 	useEffect(() => {
 		let date = new Date();
-		let enableTargetTime = 14 * 60 + 45; // Real Enable time
-		let disableTargetTime = 15 * 60; // Real Disable time
+		let enableTargetTime = 14 * 60 + 45; // Real Enable time 2:45 PM
+		let disableTargetTime = 6 * 60; // Real Disable time 6:00 AM
 		let currentTime = date.getHours() * 60 + date.getMinutes();
 
-		// REDIRECTION OF ROUTES BASED ON TIMINGS
+		// Enable and Disable
 		if (date.getDay() === 3) {
-			if(!(currentTime >= enableTargetTime && currentTime <= disableTargetTime)){
-				history.replace('/home');
+			if (!(currentTime >= enableTargetTime)) {
+				history.replace('/');
+			}
+		} else if (date.getDay() === 4) {
+			if (currentTime >= disableTargetTime) {
+				history.replace('/');
 			}
 		} else {
-			history.replace('/home');
+			history.replace('/');
 		}
 	}, []);
 
