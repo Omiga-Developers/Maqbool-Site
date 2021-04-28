@@ -13,27 +13,27 @@ import InfoPage from './pages/InfoPage/InfoPage';
 import PrayerRegPage from './pages/PrayerRegPage/PrayerRegPage';
 
 function App() {
-	let date = new Date();
-	const [opacityValue, setOpacityValue] = useState(1);
+	// let date = new Date();
+	// const [opacityValue, setOpacityValue] = useState(1);
 
 	// Reducing Opacity
-	useEffect(() => {
-		let value = 0;
-		if (date.getMonth() === 3) {
-			value = (34 - date.getDate()) / 10;
-		} else if (date.getMonth() === 4) {
-			if (date.getDate() >= 2) {
-				value = 0;
-			} else {
-				value = (2 - date.getDate()) / 10;
-			}
-		}
-		setOpacityValue(value);
-	}, []);
+	// useEffect(() => {
+	// 	let value = 0;
+	// 	if (date.getMonth() === 3) {
+	// 		value = (34 - date.getDate()) / 10;
+	// 	} else if (date.getMonth() === 4) {
+	// 		if (date.getDate() >= 2) {
+	// 			value = 0;
+	// 		} else {
+	// 			value = (2 - date.getDate()) / 10;
+	// 		}
+	// 	}
+	// 	setOpacityValue(value);
+	// }, []);
 
 	return (
 		<Router>
-			<div style={{ opacity: opacityValue }}>
+			<div>
 				<GlobalStyles />
 				<Header />
 				<Switch>
