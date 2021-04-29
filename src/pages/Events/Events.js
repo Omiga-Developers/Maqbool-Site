@@ -1,13 +1,6 @@
-import React, { createRef, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Fade } from 'react-awesome-reveal';
-import ReactPlayer from 'react-player';
 import styled from 'styled-components';
-import { Button, IconButton } from '@material-ui/core';
-import db from '../../firebase';
-import firebase from 'firebase';
-import Message from './Message/Message';
-import FlipMove from 'react-flip-move';
-import SendIcon from '@material-ui/icons/Send';
 
 function Events() {
 	const [messages, setMessages] = useState([]);
@@ -17,7 +10,7 @@ function Events() {
 	const LOADING_GIF_URL = 'https://i.stack.imgur.com/UUjhE.gif';
 	const [loading, setLoading] = useState(true);
 	const STREAMING_URL =
-		'https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2FHafizEhsanQadiri%2Fvideos%2F282026113442569%2F';
+		'https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2FHafizEhsanQadiri%2Fvideos%2F228420439053347%2F';
 
 
 	useEffect(() => {

@@ -45,15 +45,25 @@ function DashBoard() {
 		let resultBool = window.confirm('Are you sure ?');
 
 		if (resultBool) {
-			// Beginning
-			alert('Performing resetting, please hold on...');
-
 			// reset the counts to 0
+			db.collection('Jamaath Counts').doc('counts').update({
+				'Jamaath 1': 0,
+				'Jamaath 2': 0,
+				'Jamaath 3': 0,
+			});
 
 			// delete all the records from the "Registered" collection
+			db.collection('Registered')
+				.get()
+				.then((res) => {
+					res.forEach((element) => {
+						element.ref.delete();
+					});
+				})
+				.catch((err) => alert(err));
 
 			// Completed
-			alert('Completed Resetting Successfully!');
+			alert("Resetting the database, please exist the page after 2mins else database won't be completely cleared!");
 		}
 	};
 
