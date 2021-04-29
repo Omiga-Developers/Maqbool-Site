@@ -10,7 +10,7 @@ function DashBoard() {
 	// const USER_ID = '12863';
 	// const API_KEY = 'VCrsnCGK4CKplT0HcKlx';
 	const [userData, setUserData] = useState();
-	const { gen } = require('n-digit-token');
+	// const { gen } = require('n-digit-token');
 	const LOADING_GIF_URL = 'https://i.stack.imgur.com/UUjhE.gif';
 	const notifyDownload = () => toast('Preparing to download the excel sheet');
 	const notifyStartTokenGeneration = () =>
@@ -38,6 +38,24 @@ function DashBoard() {
 			setLoading(false);
 		}, 3000);
 	}, []);
+
+	// handle reset database data
+	const handleDeleteRecords = () => {
+		// returns true or false
+		let resultBool = window.confirm('Are you sure ?');
+
+		if (resultBool) {
+			// Beginning
+			alert('Performing resetting, please hold on...');
+
+			// reset the counts to 0
+
+			// delete all the records from the "Registered" collection
+
+			// Completed
+			alert('Completed Resetting Successfully!');
+		}
+	};
 
 	// handle generated tokens for all the cusotmers
 	const handleGenerateTokens = () => {
@@ -133,6 +151,7 @@ function DashBoard() {
 							<div className="dashboard__buttons">
 								<button onClick={handleGenerateTokens}>GENERATE TOKENS</button>
 								<button onClick={handleDownloadData}>DOWNLOAD DATA</button>
+								<button onClick={handleDeleteRecords}>RESET DB</button>
 								<ToastContainer hideProgressBar={true} autoClose={3000} />
 							</div>
 							<br />
@@ -211,7 +230,7 @@ const DashBoardContainer = styled.div`
 	@media screen and (max-width: 1020px) {
 		margin: 50px;
 	}
-	@media screen and (max-width: 600px) {
+	@media screen and (max-width: 750px) {
 		margin: 20px 50px;
 		/* .dashboard__invalidUser > p {
 			margin: 180px 30px;
@@ -229,7 +248,7 @@ const DashBoardContainer = styled.div`
 			margin-top: 50px;
 		}
 		.dashboard__buttons > button {
-			width: 300px;
+			width: 250px;
 			margin: 10px;
 		}
 	}
